@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur Salaire Net Maroc 2024 | Bulletin de Paie, CNSS, AMO, IR</title>
+<meta name="description" content="Simulateur gratuit et précis du salaire net au Maroc (Loi de Finances 2024). Calculez vos cotisations CNSS, AMO et IR. Export Excel inclus. SMIG 2024 à jour.">
+<meta property="og:title" content="Calculateur Salaire Net Maroc 2024 | Brut en Net">
+<meta property="og:description" content="Outil gratuit pour salariés marocains : calcul rapide du salaire net, primes, CNSS, AMO et IR.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta name="keywords" content="calcul salaire net maroc, simulateur salaire maroc, smig maroc 2024, calcul cnss maroc, amo maroc, impôt sur le revenu maroc, bulletin de paie maroc">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://salairemaroc.ma/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Calculateur Salaire Net Maroc",
+  "description": "Calculateur gratuit de salaire net au Maroc avec primes, CNSS, AMO et IR progressif.",
+  "url": "https://salairemaroc.ma/",
+  "areaServed": "MA",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+<style>
+:root{
+  --cream:#F9F7F2;--cream2:#F0EDE8;--ink:#1A1816;--ink2:#4A4540;--ink3:#8A8480;
+  --terra:#C14A1D;--terra-l:#FDF2ED;--terra2:#EAC4A8;
+  --sage:#2D5A42;--sage-l:#EEF6F2;
+  --white:#FFFFFF;--rule:#E5E1D8;--red:#C0392B;
+  --adbg:#F2EDE4;--adline:#D8CDBA;
+  --shadow:0 4px 20px rgba(26,24,22,0.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* AD BLOCKS - Google AdSense Ready */
+.ad-container{margin:24px 0;text-align:center;overflow:hidden}
+.ad-label{font-size:10px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;letter-spacing:1px;display:block}
+.ad-placeholder{background:var(--adbg);border:1px dashed var(--adline);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:12px;min-height:90px}
+.ad-sidebar{min-height:250px;width:100%}
+
+/* LAYOUT */
+.topbar{background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.topbar-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;display:flex;align-items:center;gap:12px}
+.flag-ma{width:24px;height:16px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,0.2)}
+.flag-ma svg{width:100%;height:100%;display:block}
+.topbar-brand em{color:var(--terra2);font-style:italic}
+.lang-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:inherit;font-size:.75rem;font-weight:700;padding:6px 16px;border-radius:20px;cursor:pointer;transition:0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2);border-color:var(--terra2)}
+
+.hero{position:relative;height:380px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.85}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,24,22,1) 0%,rgba(26,24,22,0.4) 60%,transparent 100%)}
+.hero-c{position:relative;padding:40px;max-width:1260px;margin:0 auto;width:100%}
+.hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
+.hero-t{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:600;color:#FFF;line-height:1.1}
+.hero-t em{font-style:italic;color:var(--terra2);font-weight:400}
+.hero-s{color:rgba(255,255,255,0.75);font-size:1.05rem;margin-top:16px;max-width:650px}
+
+.page-wrap{max-width:1260px;margin:0 auto;padding:40px 24px 100px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start}
+@media(max-width:960px){.page-wrap{grid-template-columns:1fr;padding:24px 16px}}
+
+/* MAIN CONTENT SEO BLOCKS */
+.card{background:var(--white);border:1px solid var(--rule);padding:32px;margin-bottom:32px;border-radius:var(--radius);box-shadow:var(--shadow)}
+@media(max-width:500px){.card{padding:24px 16px}}
+.card-h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.card-sub{font-size:.85rem;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-bottom:28px;font-weight:600}
+
+/* CALCULATOR STYLES */
+.slbl{font-size:.8rem;font-weight:800;text-transform:uppercase;color:var(--ink2);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.slbl::after{content:'';height:1px;flex:1;background:var(--rule)}
+.irow{display:flex;align-items:center;border-bottom:3px solid var(--ink);gap:12px;margin-bottom:12px;transition:0.2s}
+.irow:focus-within{border-color:var(--terra)}
+.irow input{flex:1;background:none;border:none;outline:none;font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,3.5rem);font-weight:600;color:var(--ink);padding:8px 0;min-width:0}
+.curr{font-size:1.2rem;font-weight:700;color:var(--ink3)}
+.ihint{font-size:.9rem;color:var(--ink3);margin-bottom:24px;display:block}
+
+.quick-salary{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.qchip{border:1px solid var(--rule);background:var(--white);color:var(--ink2);font-size:.9rem;font-weight:600;padding:8px 16px;cursor:pointer;border-radius:6px;transition:0.2s}
+.qchip:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+.prime-list{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+.prime-row{display:grid;grid-template-columns:160px 1fr auto auto;gap:16px;align-items:center;padding:16px;border:1px solid var(--rule);background:var(--white);border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,0.02)}
+.prime-row.is-imp{border-left:4px solid var(--terra)}
+.prime-row.is-non{border-left:4px solid var(--sage)}
+@media(max-width:640px){.prime-row{grid-template-columns:1fr 1fr;gap:12px}}
+
+.pamount{border:1px solid var(--rule);border-radius:4px;padding:8px 12px;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;width:100%}
+.pname{border:none;background:var(--cream);border-radius:4px;padding:8px 12px;font-size:.9rem;width:100%}
+.ptoggle{display:flex;background:var(--cream2);padding:4px;border-radius:6px}
+.ptbtn{padding:6px 12px;font-size:.7rem;font-weight:700;text-transform:uppercase;border:none;background:none;cursor:pointer;color:var(--ink3);border-radius:4px}
+.ptbtn.ai{background:var(--terra);color:white}
+.ptbtn.an{background:var(--sage);color:white}
+.pdel{background:var(--cream2);border:none;cursor:pointer;color:var(--ink3);width:32px;height:32px;border-radius:50%;font-size:1.2rem}
+
+.totbar{display:grid;grid-template-columns:repeat(3, 1fr);gap:1px;background:var(--rule);margin:24px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule)}
+.totitem{background:var(--white);padding:20px 10px;text-align:center}
+.totlbl{font-size:.7rem;font-weight:800;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.totval{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700}
+.totval.imp{color:var(--terra)}.totval.non{color:var(--sage)}
+
+/* RESULT CARD - Dark Mode for Contrast */
+.res-card{background:var(--ink);color:var(--white);padding:32px;border-radius:var(--radius);margin-bottom:32px;box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+.res-card .slbl{color:rgba(255,255,255,0.4)}
+.res-card .slbl::after{background:rgba(255,255,255,0.1)}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 0;font-size:.95rem}
+td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
+.net-row td{border-top:2px solid var(--terra2);padding-top:24px;margin-top:12px}
+.net-lbl{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600}
+.net-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--terra2)}
+
+.exp-btn{width:100%;background:var(--sage);color:white;border:none;padding:20px;font-size:1.1rem;font-weight:700;border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px;box-shadow:0 6px 20px rgba(45,90,66,0.2)}
+.exp-btn:hover:not(:disabled){background:#244935;transform:translateY(-2px)}
+
+/* SEO CLUSTER SECTIONS */
+.seo-cluster{margin-top:60px}
+.cluster-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;margin-top:24px}
+.cluster-item{background:var(--white);border:1px solid var(--rule);padding:24px;border-radius:var(--radius);transition:0.2s}
+.cluster-item:hover{border-color:var(--terra);transform:translateY(-3px)}
+.cluster-item h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:12px;color:var(--ink)}
+.cluster-item p{font-size:.9rem;color:var(--ink2);margin-bottom:16px}
+.cluster-link{color:var(--terra);text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+
+/* SIDEBAR & MONETIZATION */
+.sidebar{position:sticky;top:84px}
+.sb-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:24px;margin-bottom:24px;box-shadow:var(--shadow)}
+.sb-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;margin-bottom:16px}
+.sb-list{list-style:none}
+.sb-list li{padding:10px 0;border-bottom:1px solid var(--cream2);font-size:.9rem;display:flex;justify-content:space-between}
+.sb-list li:last-child{border-bottom:none}
+.sb-list strong{color:var(--terra)}
+
+.sb-promo{background:var(--terra-l);border:1px solid var(--terra2);padding:20px;border-radius:var(--radius);margin-bottom:24px;text-align:center}
+.sb-promo h4{color:var(--terra);font-size:.95rem;text-transform:uppercase;margin-bottom:8px;letter-spacing:1px}
+.sb-promo p{font-size:.85rem;margin-bottom:16px}
+.sb-cta{display:block;background:var(--terra);color:white;text-decoration:none;padding:12px;border-radius:4px;font-weight:700;font-size:.9rem}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 24px;text-align:center;font-size:.9rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);margin-bottom:24px}
+.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+.footer-links a{color:inherit;text-decoration:none;transition:0.2s}
+.footer-links a:hover{color:var(--terra2)}
+
+/* UTILS */
+.calc-status{font-size:.85rem;padding:12px 20px;border-radius:6px;margin-bottom:24px;font-weight:600}
+.calc-status.empty{background:var(--cream2);color:var(--ink3)}
+.calc-status.updated{background:var(--sage-l);color:var(--sage);border:1px solid var(--sage)}
+.faq-item{border-bottom:1px solid var(--rule);padding:16px 0;cursor:pointer}
+.faq-q{font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--terra)}
+.faq-a{max-height:0;overflow:hidden;transition:0.3s;font-size:.95rem;color:var(--ink2)}
+.faq-item.open .faq-a{max-height:500px;margin-top:12px;padding-bottom:12px}
+.faq-item.open .faq-q::after{content:'−'}
+
+@media(max-width:600px){
+  .hero{height:300px}
+  .hero-c{padding:24px}
+  .totbar{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="flag-ma"><svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#C1272D"/><path d="M1.5.45l.155.478h.503l-.407.296.156.478-.407-.296-.407.296.156-.478-.407-.296h.503z" fill="none" stroke="#006233" stroke-width=".08" stroke-linejoin="round"/></svg></span>
+    Salaire<em>Maroc</em>
+  </div>
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+</header>
+
+<section class="hero">
+  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663300312701/GIEuyqhwqlCTlgzb.png" alt="Patrimoine Marocain - Hub Financier">
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <div class="hero-ey" data-fr="Outil de Référence 2024" data-en="Reference Tool 2024">Outil de Référence 2024</div>
+    <h1 class="hero-t" data-fr="Calculateur <em>Salaire Net</em> Maroc" data-en="Morocco <em>Net Salary</em> Calculator">Calculateur <em>Salaire Net</em> Maroc</h1>
+    <p class="hero-s" data-fr="Estimez votre salaire net mensuel en quelques secondes. Prise en compte de la CNSS, AMO, IR et des primes selon le barème officiel 2024." data-en="Estimate your monthly net salary in seconds. Includes CNSS, AMO, IR and allowances based on the official 2024 schedule.">Estimez votre salaire net mensuel selon le barème officiel 2024.</p>
+  </div>
+</section>
+
+<div class="page-wrap">
+  <main class="main-content">
+    
+    <div class="ad-container">
+      <span class="ad-label">Publicité</span>
+      <div class="ad-placeholder">Annonce AdSense 728x90</div>
+    </div>
+
+    <div class="card" id="calculator">
+      <h2 class="card-h2" data-fr="Simulateur de Salaire" data-en="Salary Simulator">Simulateur de Salaire</h2>
+      <p class="card-sub" data-fr="Calcul précis du Brut au Net" data-en="Accurate Gross to Net Calculation">Calcul précis du Brut au Net</p>
+      
+      <div class="slbl" data-fr="① Salaire Brut Mensuel" data-en="① Monthly Gross Salary">① Salaire Brut Mensuel</div>
+      <div class="irow">
+        <input type="number" id="grossInput" placeholder="8500" min="0" step="500">
+        <span class="curr">MAD</span>
+      </div>
+      <span class="ihint" data-fr="Saisissez votre salaire de base tel qu'indiqué sur votre contrat." data-en="Enter your base salary as stated in your contract.">Saisissez votre salaire de base tel qu'indiqué sur votre contrat.</span>
+
+      <div class="quick-salary">
+        <button class="qchip" data-amt="4500">4 500</button>
+        <button class="qchip" data-amt="6000">6 000</button>
+        <button class="qchip" data-amt="12000">12 000</button>
+        <button class="qchip" data-amt="20000">20 000</button>
+      </div>
+
+      <div class="slbl" data-fr="② Primes & Indemnités" data-en="② Allowances & Bonuses">② Primes & Indemnités</div>
+      <button class="add-btn" id="addPrimeBtn" style="background:var(--ink);color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;text-transform:uppercase;font-size:0.75rem">+ <span data-fr="Ajouter une prime" data-en="Add Allowance">Ajouter une prime</span></button>
+      
+      <div class="prime-list" id="primeList"></div>
+      
+      <div class="calc-status empty" id="calcStatus" data-fr="En attente de saisie..." data-en="Waiting for input...">En attente de saisie...</div>
+
+      <div class="totbar" id="totbar" style="display:none">
+        <div class="totitem"><div class="totlbl" data-fr="Brut Imposable" data-en="Taxable Gross">Brut Imposable</div><div class="totval imp" id="totImp">—</div></div>
+        <div class="totitem"><div class="totlbl" data-fr="Exonéré" data-en="Exempt">Exonéré</div><div class="totval non" id="totNon">—</div></div>
+        <div class="totitem"><div class="totlbl" data-fr="Brut Global" data-en="Total Gross">Brut Global</div><div class="totval all" id="totAll">—</div></div>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <h2 class="slbl" data-fr="③ Votre Salaire Net" data-en="③ Your Net Salary">③ Votre Salaire Net</h2>
+      <div id="resultArea">
+        <div style="text-align:center;padding:40px;opacity:0.3" data-fr="Entrez un montant pour générer le bulletin." data-en="Enter an amount to generate the slip.">Entrez un montant pour générer le bulletin.</div>
+      </div>
+      
+      <div id="brSec" style="display:none;margin-top:40px">
+        <div class="slbl" data-fr="Détail de l'Impôt (IR)" data-en="Tax Breakdown (IR)">Détail de l'Impôt (IR)</div>
+        <div style="background:rgba(255,255,255,0.05);padding:24px;border-radius:var(--radius)">
+          <div id="brNote" style="font-size:0.85rem;margin-bottom:16px;color:var(--terra2)"></div>
+          <table class="br-table" id="brTable" style="font-size:0.85rem"></table>
+        </div>
+      </div>
+
+      <button class="exp-btn" id="exportBtn" disabled>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-fr="Télécharger le Bulletin (Excel)" data-en="Download Pay Slip (Excel)">Télécharger le Bulletin (Excel)</span>
+      </button>
+    </div>
+
+    <div class="ad-container">
+      <span class="ad-label">Publicité</span>
+      <div class="ad-placeholder">Annonce AdSense Flux de contenu</div>
+    </div>
+
+    <!-- SEO CLUSTER SECTIONS -->
+    <section class="seo-cluster">
+      <h2 class="card-h2" data-fr="Guide du Salaire au Maroc" data-en="Morocco Salary Guide">Guide du Salaire au Maroc</h2>
+      <p class="card-sub" data-fr="Tout savoir sur vos droits et cotisations" data-en="Everything about your rights & contributions">Tout savoir sur vos droits et cotisations</p>
+      
+      <div class="cluster-grid">
+        <article class="cluster-item">
+          <h3 data-fr="SMIG 2024 au Maroc" data-en="2024 SMIG in Morocco">SMIG 2024 au Maroc</h3>
+          <p data-fr="Le Salaire Minimum Interprofessionnel Garanti (SMIG) a été revalorisé. Découvrez les nouveaux montants horaires et mensuels." data-en="The Guaranteed Minimum Wage (SMIG) has been updated. Discover the new hourly and monthly rates.">Le Salaire Minimum (SMIG) a été revalorisé. Découvrez les nouveaux montants.</p>
+          <a href="#smig" class="cluster-link" data-fr="En savoir plus" data-en="Read more">En savoir plus →</a>
+        </article>
+        
+        <article class="cluster-item">
+          <h3 data-fr="Cotisations CNSS & AMO" data-en="CNSS & AMO Contributions">Cotisations CNSS & AMO</h3>
+          <p data-fr="Comprendre le calcul de la CNSS et de l'AMO sur votre bulletin de paie. Plafonds, taux et prestations sociales." data-en="Understand CNSS and AMO calculations on your pay slip. Caps, rates, and social benefits.">Comprendre le calcul de la CNSS et de l'AMO sur votre bulletin de paie.</p>
+          <a href="#cnss" class="cluster-link" data-fr="Voir les détails" data-en="View details">Voir les détails →</a>
+        </article>
+        
+        <article class="cluster-item">
+          <h3 data-fr="Primes & Indemnités" data-en="Allowances & Bonuses">Primes & Indemnités</h3>
+          <p data-fr="Quelles primes sont exonérées d'impôts ? Transport, logement, panier : le guide complet des indemnités au Maroc." data-en="Which allowances are tax-exempt? Transport, housing, meal: the complete guide to allowances in Morocco.">Quelles primes sont exonérées d'impôts ? Transport, logement, panier...</p>
+          <a href="#primes" class="cluster-link" data-fr="Consulter le guide" data-en="Check guide">Consulter le guide →</a>
+        </article>
+      </div>
+    </section>
+
+    <div class="card" style="margin-top:60px">
+      <h2 class="card-h2" data-fr="Questions Fréquentes (FAQ)" data-en="Frequently Asked Questions">Questions Fréquentes (FAQ)</h2>
+      <div id="faqList"></div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sb-promo">
+      <span class="ad-label">Partenaire</span>
+      <h4 data-fr="Besoin d'un Crédit ?" data-en="Need a Loan?">Besoin d'un Crédit ?</h4>
+      <p data-fr="Comparez les meilleures offres de crédit conso au Maroc." data-en="Compare the best personal loan offers in Morocco.">Comparez les meilleures offres de crédit conso au Maroc.</p>
+      <a href="#" class="sb-cta" data-fr="Comparer" data-en="Compare">Comparer</a>
+    </div>
+
+    <div class="sb-card">
+      <h3 class="sb-title" data-fr="Chiffres Clés 2024" data-en="Key Figures 2024">Chiffres Clés 2024</h3>
+      <ul class="sb-list">
+        <li><span>SMIG Mensuel</span> <strong>3 111,39 MAD</strong></li>
+        <li><span>Plafond CNSS</span> <strong>6 000,00 MAD</strong></li>
+        <li><span>Taux AMO</span> <strong>2,26 %</strong></li>
+        <li><span>Abattement Frais</span> <strong>20 %</strong></li>
+      </ul>
+    </div>
+
+    <div class="ad-container">
+      <span class="ad-label">Publicité</span>
+      <div class="ad-placeholder ad-sidebar">Annonce AdSense 300x600</div>
+    </div>
+
+    <div class="sb-card">
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663300312701/GIEuyqhwqlCTlgzb.png" style="width:100%;height:150px;object-fit:cover;border-radius:4px;margin-bottom:12px" alt="Maroc Hub Financier">
+      <p style="font-size:0.8rem;color:var(--ink3);font-style:italic">Le Maroc, hub financier stratégique en Afrique.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-brand">Salaire<em>Maroc</em></div>
+  <nav class="footer-links">
+    <a href="#calculator" data-fr="Calculateur" data-en="Calculator">Calculateur</a>
+    <a href="#smig" data-fr="Guide SMIG" data-en="SMIG Guide">Guide SMIG</a>
+    <a href="#cnss" data-fr="Détails CNSS" data-en="CNSS Details">Détails CNSS</a>
+    <a href="#" data-fr="Mentions Légales" data-en="Legal">Mentions Légales</a>
+    <a href="#" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+  </nav>
+  <p style="font-size:0.75rem;opacity:0.5">© 2024 SalaireMaroc.ma · Outil indépendant non-affilié aux organismes étatiques. Mise à jour : Avril 2024.</p>
+</footer>
+
+<script>
+// --- STATE & TRANSLATIONS (Preserved & Optimized) ---
+let lang = 'fr';
+let result = null;
+let primes = [];
+let pidCounter = 0;
+
+const T = {
+  gains:    {fr:'GAINS (REVENUS)',                  en:'EARNINGS'},
+  ret:      {fr:'RETENUES (COTISATIONS)',           en:'DEDUCTIONS'},
+  gross:    {fr:'Salaire de base',                  en:'Base salary'},
+  cnss:     {fr:'CNSS (Retraite/Prestations)',      en:'CNSS Contribution'},
+  cnssN:    {fr:'4,48 % du brut (max 6 000)',       en:'4.48% of gross (cap 6,000)'},
+  amo:      {fr:'AMO (Assurance Maladie)',          en:'AMO Health Insurance'},
+  amoN:     {fr:'2,26 % du brut imposable',         en:'2.26% of taxable gross'},
+  ab:       {fr:'Frais Professionnels',             en:'Professional Expenses'},
+  abN:      {fr:'Abattement forfaitaire de 20 %',   en:'20% fixed deduction'},
+  tax:      {fr:'Revenu Net Imposable',             en:'Net Taxable Income'},
+  taxN:     {fr:'Base de calcul de l\'IR',          en:'IR calculation base'},
+  ir:       {fr:'IR (Impôt sur le Revenu)',         en:'IR Income Tax'},
+  irN:      {fr:'Barème progressif annuel',         en:'Annual progressive scale'},
+  net:      {fr:'NET À PAYER',                      en:'NET TO PAY'},
+  eff:      {fr:'Taux d\'imposition réel',          en:'Effective tax rate'},
+  imp:      {fr:'Prime Imposable',                  en:'Taxable Allowance'},
+  non:      {fr:'Indemnité exonérée',               en:'Exempt Allowance'},
+  impS:     {fr:'Imposable',                        en:'Taxable'},
+  nonS:     {fr:'Exonérée',                         en:'Exempt'},
+  namePH:   {fr:'ex: Transport, Panier...',         en:'e.g. Transport, Meal...'},
+  brNote:   {fr:'Détail du calcul IR',              en:'IR calculation breakdown'},
+  irDu:     {fr:'IR Dû',                            en:'Tax Due'},
+  marginal: {fr:'Tranche Marginale',                en:'Marginal Bracket'}
+};
+const t = k => T[k][lang];
+
+const FAQS = {
+  fr: [
+    {q: "Comment est calculé le salaire net au Maroc ?", a: "Le salaire net est calculé en déduisant du salaire brut les cotisations CNSS (4,48%), l'AMO (2,26%) et l'Impôt sur le Revenu (IR) après abattement des frais professionnels."},
+    {q: "Quel est le montant du SMIG en 2024 ?", a: "Le SMIG mensuel dans le secteur privé est de 3 111,39 MAD pour 191 heures de travail par mois."},
+    {q: "Quelles primes sont exonérées d'impôts ?", a: "Les primes de transport (jusqu'à 500 MAD/mois), de panier (jusqu'à 30 MAD/jour) et certaines allocations familiales sont exonérées."},
+    {q: "Comment fonctionne le plafond CNSS ?", a: "La part salariale de la CNSS est plafonnée à un salaire brut de 6 000 MAD. Au-delà, la cotisation n'augmente plus."}
+  ],
+  en: [
+    {q: "How is net salary calculated in Morocco?", a: "Net salary is calculated by deducting CNSS (4.48%), AMO (2.26%), and Income Tax (IR) from the gross salary after professional expense deductions."},
+    {q: "What is the SMIG amount in 2024?", a: "The monthly SMIG in the private sector is 3,111.39 MAD for 191 working hours per month."},
+    {q: "Which allowances are tax-exempt?", a: "Transport (up to 500 MAD/month), meal (up to 30 MAD/day), and certain family allowances are exempt."},
+    {q: "How does the CNSS cap work?", a: "The CNSS employee share is capped at a gross salary of 6,000 MAD. Beyond this, the contribution remains fixed."}
+  ]
+};
+
+// --- CALCULATION ENGINE (PRESERVED) ---
+function calcIR(annualTaxable) {
+  const b = [
+    {l:30000, r:0,    s:0},
+    {l:50000, r:0.10, s:3000},
+    {l:60000, r:0.20, s:8000},
+    {l:80000, r:0.30, s:14000},
+    {l:180000,r:0.34, s:17200},
+    {l:Infinity,r:0.38,s:24400}
+  ];
+  let rate=0, ded=0;
+  for(let i=0; i<b.length; i++){
+    if(annualTaxable <= b[i].l){ rate=b[i].r; ded=b[i].s; break; }
+  }
+  return Math.max(0, (annualTaxable * rate) - ded);
+}
+
+function getBracketData(annualTaxable) {
+  const steps = [
+    {m:0,      M:30000,  r:0},
+    {m:30000,  M:50000,  r:0.10},
+    {m:50000,  M:60000,  r:0.20},
+    {m:60000,  M:80000,  r:0.30},
+    {m:80000,  M:180000, r:0.34},
+    {m:180000, M:Infinity,r:0.38}
+  ];
+  return steps.map(s => {
+    const inBracket = Math.max(0, Math.min(annualTaxable, s.M) - s.m);
+    return {
+      l: {fr: s.M===Infinity ? `> ${s.m}` : `${s.m} – ${s.M}`, en: s.M===Infinity ? `> ${s.m}` : `${s.m} – ${s.M}`},
+      rate: s.r, inBracket, tax: inBracket * s.r, reached: inBracket > 0,
+      pct: annualTaxable > 0 ? (inBracket / annualTaxable) * 100 : 0
+    };
+  });
+}
+
+function compute(base) {
+  const pimp = primes.filter(p => p.imp).reduce((a,b) => a + b.amount, 0);
+  const pnon = primes.filter(p => !p.imp).reduce((a,b) => a + b.amount, 0);
+  const brutImp = base + pimp;
+  const cnssM = Math.min(brutImp, 6000) * 0.0448;
+  const amoM = brutImp * 0.0226;
+  const brutImpA = brutImp * 12;
+  const abA = Math.min(Math.max(brutImpA * 0.20, 2160), 30000);
+  const taxA = Math.max(0, brutImpA - (cnssM * 12) - (amoM * 12) - abA);
+  const irA = calcIR(taxA);
+  const irM = irA / 12;
+  const netM = (brutImp + pnon) - cnssM - amoM - irM;
+  return { base, pimp, pnon, brutImp, brutAll: brutImp+pnon, cnssM, amoM, abM: abA/12, taxM: taxA/12, irM, netM, irA, taxA, eff: brutImpA > 0 ? (irA/brutImpA)*100 : 0 };
+}
+
+function fmt(n) { return n.toLocaleString(lang==='fr'?'fr-MA':'en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' MAD'; }
+function fmtShort(n) { return n.toLocaleString(lang==='fr'?'fr-MA':'en-US', {maximumFractionDigits:0}); }
+
+// --- UX LOGIC ---
+window.setPrimeAmount = (id, val) => { const p = primes.find(x => x.id === id); if (p) { p.amount = parseFloat(val) || 0; calculate(); } };
+window.setPrimeName = (id, val) => { const p = primes.find(x => x.id === id); if (p) p.name = val; };
+window.setPrimeImp = (id, isImp) => { const p = primes.find(x => x.id === id); if (p) { p.imp = isImp; renderPrimes(); calculate(); } };
+window.deletePrime = (id) => { primes = primes.filter(x => x.id !== id); renderPrimes(); calculate(); };
+
+document.getElementById('addPrimeBtn').addEventListener('click', () => {
+  const id = ++pidCounter;
+  primes.push({ id, name: '', amount: 0, imp: true });
+  renderPrimes();
+});
+
+document.getElementById('grossInput').addEventListener('input', calculate);
+document.querySelectorAll('.qchip').forEach(btn => btn.addEventListener('click', function(){
+  document.getElementById('grossInput').value = this.dataset.amt; calculate();
+}));
+
+function renderPrimes() {
+  const list = document.getElementById('primeList');
+  list.innerHTML = primes.map(p => `
+    <div class="prime-row ${p.imp ? 'is-imp' : 'is-non'}" id="pr-${p.id}">
+      <input class="pamount" type="number" placeholder="0" value="${p.amount || ''}" oninput="window.setPrimeAmount(${p.id}, this.value)">
+      <input class="pname" type="text" placeholder="${t('namePH')}" value="${p.name}" oninput="window.setPrimeName(${p.id}, this.value)">
+      <div class="ptoggle">
+        <button class="ptbtn ${p.imp ? 'ai' : ''}" onclick="window.setPrimeImp(${p.id}, true)">${t('impS')}</button>
+        <button class="ptbtn ${!p.imp ? 'an' : ''}" onclick="window.setPrimeImp(${p.id}, false)">${t('nonS')}</button>
+      </div>
+      <button class="pdel" onclick="window.deletePrime(${p.id})">×</button>
+    </div>`).join('');
+}
+
+function calculate() {
+  const raw = parseFloat(document.getElementById('grossInput').value);
+  const status = document.getElementById('calcStatus');
+  if (!raw || raw <= 0) { showEmpty(); status.className = 'calc-status empty'; return; }
+  result = compute(raw);
+  status.textContent = lang==='fr' ? '✓ Calcul mis à jour' : '✓ Calculation updated';
+  status.className = 'calc-status updated';
+  document.getElementById('exportBtn').disabled = false;
+  renderResult(result);
+}
+
+function renderResult(r) {
+  document.getElementById('totbar').style.display = 'grid';
+  document.getElementById('totImp').textContent = fmt(r.brutImp);
+  document.getElementById('totNon').textContent = fmt(r.pnon);
+  document.getElementById('totAll').textContent = fmt(r.brutAll);
+
+  let html = '<table><tbody>';
+  html += `<tr><td><span style="color:rgba(255,255,255,0.6)">${t('gross')}</span></td><td>${fmt(r.base)}</td></tr>`;
+  primes.filter(p => p.amount > 0).forEach(p => {
+    html += `<tr><td><span style="color:${p.imp?'var(--terra2)':'var(--sage)'}">${p.name || (p.imp?t('imp'):t('non'))}</span></td><td>+ ${fmt(p.amount)}</td></tr>`;
+  });
+  html += `<tr><td><span>${t('cnss')}</span><div style="font-size:0.7rem;opacity:0.5">${t('cnssN')}</div></td><td style="color:#FF8A80">− ${fmt(r.cnssM)}</td></tr>`;
+  html += `<tr><td><span>${t('amo')}</span><div style="font-size:0.7rem;opacity:0.5">${t('amoN')}</div></td><td style="color:#FF8A80">− ${fmt(r.amoM)}</td></tr>`;
+  html += `<tr><td><span>${t('ir')}</span><div style="font-size:0.7rem;opacity:0.5">${t('irN')}</div></td><td style="color:#FF8A80">− ${fmt(r.irM)}</td></tr>`;
+  html += `<tr class="net-row"><td><span class="net-lbl">${t('net')}</span></td><td><span class="net-val">${fmt(r.netM)}</span></td></tr>`;
+  html += '</tbody></table>';
+  document.getElementById('resultArea').innerHTML = html;
+  renderBrackets(r);
+}
+
+function renderBrackets(r) {
+  const sec = document.getElementById('brSec');
+  if (r.taxA <= 0) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block';
+  const bdata = getBracketData(r.taxA);
+  const marginalIdx = bdata.reduce((mi, b, i) => b.reached ? i : mi, 0);
+  document.getElementById('brNote').textContent = `${t('brNote')} : ${fmtShort(r.taxA)} MAD imposable/an`;
+  let tbl = `<tbody>`;
+  bdata.forEach((b, i) => {
+    const isMarginal = i === marginalIdx;
+    tbl += `<tr style="color:${b.reached?(isMarginal?'var(--terra2)':'white'):'rgba(255,255,255,0.2)'}">
+      <td>${b.l[lang]}</td>
+      <td style="text-align:right">${(b.rate*100).toFixed(0)}%</td>
+      <td style="text-align:right">${b.tax > 0 ? fmtShort(b.tax)+' MAD' : '—'}</td>
+    </tr>`;
+  });
+  document.getElementById('brTable').innerHTML = tbl + '</tbody>';
+}
+
+function showEmpty() {
+  document.getElementById('resultArea').innerHTML = `<div style="text-align:center;padding:40px;opacity:0.3">${lang==='fr'?'Entrez un montant pour générer le bulletin.':'Enter an amount to generate the slip.'}</div>`;
+  document.getElementById('brSec').style.display = 'none';
+  document.getElementById('totbar').style.display = 'none';
+  document.getElementById('exportBtn').disabled = true;
+}
+
+function toggleLang() {
+  lang = lang === 'fr' ? 'en' : 'fr';
+  document.documentElement.lang = lang;
+  document.getElementById('langBtn').textContent = lang === 'fr' ? 'EN' : 'FR';
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    const v = el.dataset[lang];
+    if (v) { if (el.tagName === 'INPUT') el.placeholder = v; else el.innerHTML = v; }
+  });
+  renderFAQ(); if (result) calculate();
+}
+
+function renderFAQ() {
+  document.getElementById('faqList').innerHTML = FAQS[lang].map(f =>
+    `<div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">${f.q}</div>
+      <div class="faq-a">${f.a}</div>
+    </div>`).join('');
+}
+
+async function exportBDP() {
+  if (!result || typeof ExcelJS === 'undefined') return;
+  const r = result;
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Bulletin de Paie');
+  ws.columns = [{width:35}, {width:15}, {width:15}];
+  ws.addRow(['BULLETIN DE PAIE - SALAIREMAROC.MA']).font = {bold:true};
+  ws.addRow(['Date: ' + new Date().toLocaleDateString()]);
+  ws.addRow([]);
+  ws.addRow(['Désignation', 'Mensuel', 'Annuel']);
+  ws.addRow([t('gross'), r.base, r.base*12]);
+  ws.addRow([t('cnss'), -r.cnssM, -r.cnssM*12]);
+  ws.addRow([t('amo'), -r.amoM, -r.amoM*12]);
+  ws.addRow([t('ir'), -r.irM, -r.irM*12]);
+  ws.addRow([]);
+  ws.addRow([t('net'), r.netM, r.netM*12]).font = {bold:true};
+  const buf = await wb.xlsx.writeBuffer();
+  const blob = new Blob([buf], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `Bulletin-Paie-${r.netM.toFixed(0)}MAD.xlsx`; a.click();
+}
+
+document.getElementById('exportBtn').addEventListener('click', exportBDP);
+renderFAQ();
+</script>
+</body>
+</html>
