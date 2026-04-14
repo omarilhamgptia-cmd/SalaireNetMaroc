@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur Auto-Entrepreneur Maroc 2026 | IR, CNSS, Revenus</title>
+<meta name="description" content="Simulateur gratuit pour auto-entrepreneurs au Maroc (Loi de Finances 2026). Calculez vos cotisations CNSS, IR 0.5%/1%, et revenus nets. Seuil 80 000 DH.">
+<meta property="og:title" content="Calculateur Auto-Entrepreneur Maroc 2026">
+<meta property="og:description" content="Outil gratuit pour auto-entrepreneurs : calcul rapide des cotisations CNSS, IR progressif, et revenus nets.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta name="keywords" content="auto entrepreneur maroc, simulateur auto entrepreneur, cnss auto entrepreneur, ir auto entrepreneur maroc, calcul revenus auto entrepreneur">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://calculateurdumaroc.com/auto-entrepreneur/">
+<meta property="og:url" content="https://calculateurdumaroc.com/auto-entrepreneur/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Calculateur Auto-Entrepreneur Maroc",
+  "description": "Calculateur gratuit pour auto-entrepreneurs au Maroc avec CNSS, IR 0.5%/1%, et seuil 80 000 DH.",
+  "url": "https://calculateurdumaroc.com/auto-entrepreneur/",
+  "areaServed": "MA",
+  "inLanguage": ["fr", "en"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+<style>
+:root{
+  --cream:#F9F7F2;--cream2:#F0EDE8;--ink:#1A1816;--ink2:#4A4540;--ink3:#8A8480;
+  --terra:#C14A1D;--terra-l:#FDF2ED;--terra2:#EAC4A8;
+  --sage:#2D5A42;--sage-l:#EEF6F2;
+  --white:#FFFFFF;--rule:#E5E1D8;--red:#C0392B;
+  --adbg:#F2EDE4;--adline:#D8CDBA;
+  --shadow:0 4px 20px rgba(26,24,22,0.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* AD BLOCKS - Google AdSense Ready */
+.ad-container{margin:24px 0;text-align:center;overflow:hidden}
+.ad-label{font-size:10px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;letter-spacing:1px;display:block}
+.ad-placeholder{background:var(--adbg);border:1px dashed var(--adline);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:12px;min-height:90px}
+.ad-sidebar{min-height:250px;width:100%}
+
+/* LAYOUT */
+.topbar{background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.topbar-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;display:flex;align-items:center;gap:12px}
+.flag-ma{width:24px;height:16px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,0.2)}
+.flag-ma svg{width:100%;height:100%;display:block}
+.topbar-brand em{color:var(--terra2);font-style:italic}
+.lang-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:inherit;font-size:.75rem;font-weight:700;padding:6px 16px;border-radius:20px;cursor:pointer;transition:0.2s}
+.lang-btn:hover{background:rgba(255,255,255,0.2);border-color:var(--terra2)}
+
+.hero{position:relative;height:380px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.85}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,24,22,1) 0%,rgba(26,24,22,0.4) 60%,transparent 100%)}
+.hero-c{position:relative;padding:40px;max-width:1260px;margin:0 auto;width:100%}
+.hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
+.hero-t{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:600;color:#FFF;line-height:1.1}
+.hero-t em{font-style:italic;color:var(--terra2);font-weight:400}
+.hero-s{color:rgba(255,255,255,0.75);font-size:1.05rem;margin-top:16px;max-width:650px}
+
+.page-wrap{max-width:1260px;margin:0 auto;padding:40px 24px 100px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start}
+@media(max-width:960px){.page-wrap{grid-template-columns:1fr;padding:24px 16px}}
+
+/* MAIN CONTENT SEO BLOCKS */
+.card{background:var(--white);border:1px solid var(--rule);padding:32px;margin-bottom:32px;border-radius:var(--radius);box-shadow:var(--shadow)}
+@media(max-width:500px){.card{padding:24px 16px}}
+.card-h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.card-sub{font-size:.85rem;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-bottom:28px;font-weight:600}
+
+/* CALCULATOR STYLES */
+.slbl{font-size:.8rem;font-weight:800;text-transform:uppercase;color:var(--ink2);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.slbl::after{content:'';height:1px;flex:1;background:var(--rule)}
+.irow{display:flex;align-items:center;border-bottom:3px solid var(--ink);gap:12px;margin-bottom:12px;transition:0.2s}
+.irow:focus-within{border-color:var(--terra)}
+.irow input{flex:1;background:none;border:none;outline:none;font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,3.5rem);font-weight:600;color:var(--ink);padding:8px 0;min-width:0}
+.curr{font-size:1.2rem;font-weight:700;color:var(--ink3)}
+.ihint{font-size:.9rem;color:var(--ink3);margin-bottom:24px;display:block}
+
+.quick-salary{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.qchip{border:1px solid var(--rule);background:var(--white);color:var(--ink2);font-size:.9rem;font-weight:600;padding:8px 16px;cursor:pointer;border-radius:6px;transition:0.2s}
+.qchip:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+.totbar{display:grid;grid-template-columns:repeat(3, 1fr);gap:1px;background:var(--rule);margin:24px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule)}
+.totitem{background:var(--white);padding:20px 10px;text-align:center}
+.totlbl{font-size:.7rem;font-weight:800;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.totval{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700}
+.totval.imp{color:var(--terra)}.totval.non{color:var(--sage)}
+
+/* RESULT CARD - Dark Mode for Contrast */
+.res-card{background:var(--ink);color:var(--white);padding:32px;border-radius:var(--radius);margin-bottom:32px;box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+.res-card .slbl{color:rgba(255,255,255,0.4)}
+.res-card .slbl::after{background:rgba(255,255,255,0.1)}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 0;font-size:.95rem}
+td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
+.net-row td{border-top:2px solid var(--terra2);padding-top:24px;margin-top:12px}
+.net-lbl{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600}
+.net-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--terra2)}
+
+.exp-btn{width:100%;background:var(--sage);color:white;border:none;padding:20px;font-size:1.1rem;font-weight:700;border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px;box-shadow:0 6px 20px rgba(45,90,66,0.2)}
+.exp-btn:hover:not(:disabled){background:#244935;transform:translateY(-2px)}
+
+/* ALERTES */
+.alert{background:var(--terra-l);border:1px solid var(--terra2);padding:16px;border-radius:var(--radius);margin-bottom:24px}
+.alert h4{color:var(--terra);font-size:1rem;margin-bottom:8px}
+.alert p{font-size:.9rem;color:var(--ink2)}
+
+/* SEO CLUSTER SECTIONS */
+.seo-cluster{margin-top:60px}
+.cluster-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;margin-top:24px}
+.cluster-item{background:var(--white);border:1px solid var(--rule);padding:24px;border-radius:var(--radius);transition:0.2s}
+.cluster-item:hover{border-color:var(--terra);transform:translateY(-3px)}
+.cluster-item h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:12px;color:var(--ink)}
+.cluster-item p{font-size:.9rem;color:var(--ink2);margin-bottom:16px}
+.cluster-link{color:var(--terra);text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+
+/* SIDEBAR & MONETIZATION */
+.sidebar{position:sticky;top:84px}
+.sb-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:24px;margin-bottom:24px;box-shadow:var(--shadow)}
+.sb-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;margin-bottom:16px}
+.sb-list{list-style:none}
+.sb-list li{padding:10px 0;border-bottom:1px solid var(--cream2);font-size:.9rem;display:flex;justify-content:space-between}
+.sb-list li:last-child{border-bottom:none}
+.sb-list strong{color:var(--terra)}
+
+.sb-promo{background:var(--terra-l);border:1px solid var(--terra2);padding:20px;border-radius:var(--radius);margin-bottom:24px;text-align:center}
+.sb-promo h4{color:var(--terra);font-size:.95rem;text-transform:uppercase;margin-bottom:8px;letter-spacing:1px}
+.sb-promo p{font-size:.85rem;margin-bottom:16px}
+.sb-cta{display:block;background:var(--terra);color:white;text-decoration:none;padding:12px;border-radius:4px;font-weight:700;font-size:.9rem}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 24px;text-align:center;font-size:.9rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);margin-bottom:24px}
+.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+.footer-links a{color:inherit;text-decoration:none;transition:0.2s}
+.footer-links a:hover{color:var(--terra2)}
+.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+.footer-links a{color:inherit;text-decoration:none;transition:0.2s}
+.footer-links a:hover{color:var(--terra2)}
+
+/* UTILS */
+.calc-status{font-size:.85rem;padding:12px 20px;border-radius:6px;margin-bottom:24px;font-weight:600}
+.calc-status.empty{background:var(--cream2);color:var(--ink3)}
+.calc-status.updated{background:var(--sage-l);color:var(--sage);border:1px solid var(--sage)}
+.faq-item{border-bottom:1px solid var(--rule);padding:16px 0;cursor:pointer}
+.faq-q{font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--terra)}
+.faq-a{max-height:0;overflow:hidden;transition:0.3s;font-size:.95rem;color:var(--ink2)}
+.faq-item.open .faq-a{max-height:500px;margin-top:12px;padding-bottom:12px}
+.faq-item.open .faq-q::after{content:'−'}
+
+@media(max-width:600px){
+  .hero{height:300px}
+  .hero-c{padding:24px}
+  .totbar{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="flag-ma"><svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#C1272D"/><path d="M1.5.45l.155.478h.503l-.407.296.156.478-.407-.296-.407.296.156-.478-.407-.296h.503z" fill="none" stroke="#006233" stroke-width=".08" stroke-linejoin="round"/></svg></span>
+    Auto<em>Entrepreneur</em>
+  </div>
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+</header>
+
+<section class="hero">
+  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663300312701/GIEuyqhwqlCTlgzb.png" alt="Entrepreneuriat Maroc">
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <div class="hero-ey" data-fr="Outil de Référence 2026" data-en="Reference Tool 2026">Outil de Référence 2026</div>
+    <h1 class="hero-t" data-fr="Calculateur <em>Auto-Entrepreneur</em> Maroc" data-en="Morocco <em>Self-Employed</em> Calculator">Calculateur <em>Auto-Entrepreneur</em> Maroc</h1>
+    <p class="hero-s" data-fr="Estimez vos revenus nets en tant qu'auto-entrepreneur. CNSS, IR 0.5%/1%, seuil 80 000 DH selon la loi de Finances 2026." data-en="Estimate your net income as a self-employed person. CNSS, IR 0.5%/1%, 80,000 DH threshold according to 2026 Finance Law.">Estimez vos revenus nets en tant qu'auto-entrepreneur selon la loi de Finances 2026.</p>
+  </div>
+</section>
+
+<div class="page-wrap">
+  <main class="main-content">
+
+    <div class="ad-container">
+      <span class="ad-label">Publicité</span>
+      <div class="ad-placeholder">Annonce AdSense 728x90</div>
+    </div>
+
+    <div class="card" id="calculator">
+      <h2 class="card-h2" data-fr="Simulateur Auto-Entrepreneur" data-en="Self-Employed Simulator">Simulateur Auto-Entrepreneur</h2>
+      <p class="card-sub" data-fr="Calcul précis des cotisations et impôts" data-en="Accurate contributions and tax calculation">Calcul précis des cotisations et impôts</p>
+
+      <div class="slbl" data-fr="① Revenus Annuels Bruts" data-en="① Annual Gross Income">① Revenus Annuels Bruts</div>
+      <div class="irow">
+        <input type="number" id="incomeInput" placeholder="50000" min="0" step="1000">
+        <span class="curr">MAD</span>
+      </div>
+      <span class="ihint" data-fr="Saisissez vos revenus annuels bruts avant déductions." data-en="Enter your annual gross income before deductions.">Saisissez vos revenus annuels bruts avant déductions.</span>
+
+      <div class="quick-salary">
+        <button class="qchip" data-amt="30000">30 000</button>
+        <button class="qchip" data-amt="50000">50 000</button>
+        <button class="qchip" data-amt="80000">80 000</button>
+        <button class="qchip" data-amt="120000">120 000</button>
+      </div>
+
+      <div class="calc-status empty" id="calcStatus" data-fr="En attente de saisie..." data-en="Waiting for input...">En attente de saisie...</div>
+
+      <div class="totbar" id="totbar" style="display:none">
+        <div class="totitem"><div class="totlbl" data-fr="Revenus Bruts" data-en="Gross Income">Revenus Bruts</div><div class="totval" id="totGross">—</div></div>
+        <div class="totitem"><div class="totlbl" data-fr="Cotisations" data-en="Contributions">Cotisations</div><div class="totval imp" id="totContrib">—</div></div>
+        <div class="totitem"><div class="totlbl" data-fr="Revenus Nets" data-en="Net Income">Revenus Nets</div><div class="totval non" id="totNet">—</div></div>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <h2 class="slbl" data-fr="② Votre Résultat" data-en="② Your Result">② Votre Résultat</h2>
+      <div id="resultArea">
+        <div style="text-align:center;padding:40px;opacity:0.3" data-fr="Entrez un montant pour générer le calcul." data-en="Enter an amount to generate the calculation.">Entrez un montant pour générer le calcul.</div>
+      </div>
+
+      <button class="exp-btn" id="exportBtn" disabled data-fr="Télécharger le Rapport (Excel)" data-en="Download Report (Excel)">Télécharger le Rapport (Excel)</button>
+    </div>
+
+    <div class="alert">
+      <h4 data-fr="⚠️ Obligations Auto-Entrepreneur" data-en="⚠️ Self-Employed Obligations">⚠️ Obligations Auto-Entrepreneur</h4>
+      <p data-fr="Vous devez déclarer vos revenus annuellement. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD." data-en="You must declare your income annually. CNSS mandatory if income > 24,000 MAD/year. Progressive IR 0.5%/1% beyond 80,000 MAD.">Vous devez déclarer vos revenus annuellement. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h2" data-fr="Questions Fréquentes (FAQ)" data-en="Frequently Asked Questions">Questions Fréquentes (FAQ)</h2>
+      <div id="faqList"></div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sb-promo">
+      <span class="ad-label">Partenaire</span>
+      <h4 data-fr="Besoin d'un Crédit ?" data-en="Need a Loan?">Besoin d'un Crédit ?</h4>
+      <p data-fr="Comparez les meilleures offres de crédit conso au Maroc." data-en="Compare the best personal loan offers in Morocco.">Comparez les meilleures offres de crédit conso au Maroc.</p>
+      <a href="#" class="sb-cta" data-fr="Comparer" data-en="Compare">Comparer</a>
+    </div>
+
+    <div class="sb-card">
+      <h3 class="sb-title" data-fr="Chiffres Clés 2026" data-en="Key Figures 2026">Chiffres Clés 2026</h3>
+      <ul class="sb-list">
+        <li><span>Seuil IR</span> <strong>80 000 MAD</strong></li>
+        <li><span>Taux IR 1</span> <strong>0,5 %</strong></li>
+        <li><span>Taux IR 2</span> <strong>1 %</strong></li>
+        <li><span>CNSS</span> <strong>4,48 %</strong></li>
+      </ul>
+    </div>
+
+    <div class="ad-container">
+      <span class="ad-label">Publicité</span>
+      <div class="ad-placeholder ad-sidebar">Annonce AdSense 300x600</div>
+    </div>
+
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-brand">Auto<em>Entrepreneur</em></div>
+  <div class="footer-links">
+    <a href="../" data-fr="Retour au Calculateur Salarié" data-en="Back to Salary Calculator">Retour au Calculateur Salarié</a>
+    <a href="#" data-fr="Contact" data-en="Contact">Contact</a>
+    <a href="#" data-fr="À propos" data-en="About">À propos</a>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.5">© 2026 AutoEntrepreneur.ma · Outil indépendant non-affilié aux organismes étatiques. Mise à jour : Avril 2026.</p>
+</footer>
+
+<script>
+// --- STATE & TRANSLATIONS ---
+let lang = 'fr';
+let result = null;
+
+const T = {
+  gross:    {fr:'Revenus Bruts',                  en:'Gross Income'},
+  cnss:     {fr:'CNSS (Retraite/Prestations)',      en:'CNSS Contribution'},
+  cnssN:    {fr:'4,48 % des revenus',               en:'4.48% of income'},
+  ir:       {fr:'IR (Impôt sur le Revenu)',         en:'IR Income Tax'},
+  irN:      {fr:'0,5 % ≤ 80 000 / 1 % > 80 000',   en:'0.5% ≤ 80,000 / 1% > 80,000'},
+  net:      {fr:'REVENU NET',                      en:'NET INCOME'},
+  eff:      {fr:'Taux d\'imposition réel',          en:'Effective tax rate'}
+};
+const t = k => T[k][lang];
+
+const FAQS = {
+  fr: [
+    {q: "Qu'est-ce qu'un auto-entrepreneur au Maroc ?", a: "L'auto-entrepreneur est un régime simplifié pour les travailleurs indépendants avec des cotisations sociales réduites et une fiscalité avantageuse."},
+    {q: "Quel est le seuil pour l'IR en 2026 ?", a: "L'impôt sur le revenu est de 0.5% pour les revenus ≤ 80 000 MAD/an, et 1% pour les revenus supérieurs."},
+    {q: "La CNSS est-elle obligatoire ?", a: "Oui, si vos revenus dépassent 24 000 MAD/an. Le taux est de 4.48% sur vos revenus bruts."},
+    {q: "Comment déclarer mes revenus ?", a: "Vous devez déclarer annuellement vos revenus auprès de l'administration fiscale et de la CNSS."}
+  ],
+  en: [
+    {q: "What is a self-employed person in Morocco?", a: "The self-employed regime is a simplified system for independent workers with reduced social contributions and favorable taxation."},
+    {q: "What is the IR threshold in 2026?", a: "Income tax is 0.5% for income ≤ 80,000 MAD/year, and 1% for higher income."},
+    {q: "Is CNSS mandatory?", a: "Yes, if your income exceeds 24,000 MAD/year. The rate is 4.48% on your gross income."},
+    {q: "How to declare my income?", a: "You must declare your income annually to the tax administration and CNSS."}
+  ]
+};
+
+// --- CALCULATION ENGINE ---
+function compute(income) {
+  const cnss = income * 0.0448;
+  let ir = 0;
+  if (income <= 80000) {
+    ir = income * 0.005;
+  } else {
+    ir = 80000 * 0.005 + (income - 80000) * 0.01;
+  }
+  const net = income - cnss - ir;
+  return { income, cnss, ir, net, eff: income > 0 ? (ir / income) * 100 : 0 };
+}
+
+function fmt(n) { return n.toLocaleString(lang==='fr'?'fr-MA':'en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' MAD'; }
+function fmtShort(n) { return n.toLocaleString(lang==='fr'?'fr-MA':'en-US', {maximumFractionDigits:0}); }
+
+// --- UX LOGIC ---
+document.getElementById('incomeInput').addEventListener('input', calculate);
+document.querySelectorAll('.qchip').forEach(btn => btn.addEventListener('click', function(){
+  document.getElementById('incomeInput').value = this.dataset.amt; calculate();
+}));
+
+function calculate() {
+  const raw = parseFloat(document.getElementById('incomeInput').value);
+  const status = document.getElementById('calcStatus');
+  if (!raw || raw <= 0) { showEmpty(); status.className = 'calc-status empty'; return; }
+  result = compute(raw);
+  status.textContent = lang==='fr' ? '✓ Calcul mis à jour' : '✓ Calculation updated';
+  status.className = 'calc-status updated';
+  document.getElementById('exportBtn').disabled = false;
+  renderResult(result);
+}
+
+function renderResult(r) {
+  document.getElementById('totbar').style.display = 'grid';
+  document.getElementById('totGross').textContent = fmt(r.income);
+  document.getElementById('totContrib').textContent = fmt(r.cnss + r.ir);
+  document.getElementById('totNet').textContent = fmt(r.net);
+
+  let html = '<table><tbody>';
+  html += `<tr><td><span style="color:rgba(255,255,255,0.6)">${t('gross')}</span></td><td>${fmt(r.income)}</td></tr>`;
+  html += `<tr><td><span>${t('cnss')}</span><div style="font-size:0.7rem;opacity:0.5">${t('cnssN')}</div></td><td style="color:#FF8A80">− ${fmt(r.cnss)}</td></tr>`;
+  html += `<tr><td><span>${t('ir')}</span><div style="font-size:0.7rem;opacity:0.5">${t('irN')}</div></td><td style="color:#FF8A80">− ${fmt(r.ir)}</td></tr>`;
+  html += `<tr class="net-row"><td><span class="net-lbl">${t('net')}</span></td><td><span class="net-val">${fmt(r.net)}</span></td></tr>`;
+  html += '</tbody></table>';
+  document.getElementById('resultArea').innerHTML = html;
+}
+
+function showEmpty() {
+  document.getElementById('resultArea').innerHTML = `<div style="text-align:center;padding:40px;opacity:0.3">${lang==='fr'?'Entrez un montant pour générer le calcul.':'Enter an amount to generate the calculation.'}</div>`;
+  document.getElementById('totbar').style.display = 'none';
+  document.getElementById('exportBtn').disabled = true;
+}
+
+function toggleLang() {
+  lang = lang === 'fr' ? 'en' : 'fr';
+  document.documentElement.lang = lang;
+  document.getElementById('langBtn').textContent = lang === 'fr' ? 'EN' : 'FR';
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    const v = el.dataset[lang];
+    if (v) { if (el.tagName === 'INPUT') el.placeholder = v; else el.innerHTML = v; }
+  });
+  renderFAQ(); if (result) calculate();
+}
+
+function renderFAQ() {
+  document.getElementById('faqList').innerHTML = FAQS[lang].map(f =>
+    `<div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">${f.q}</div>
+      <div class="faq-a">${f.a}</div>
+    </div>`).join('');
+}
+
+async function exportReport() {
+  if (!result || typeof ExcelJS === 'undefined') return;
+  const r = result;
+  const wb = new ExcelJS.Workbook();
+  const ws = wb.addWorksheet('Rapport Auto-Entrepreneur');
+  ws.columns = [{width:35}, {width:15}, {width:15}];
+  ws.addRow(['RAPPORT AUTO-ENTREPRENEUR - AUTOENTREPRENEUR.MA']).font = {bold:true};
+  ws.addRow(['Date: ' + new Date().toLocaleDateString()]);
+  ws.addRow([]);
+  ws.addRow(['Désignation', 'Annuel', 'Mensuel']);
+  ws.addRow([t('gross'), r.income, r.income/12]);
+  ws.addRow([t('cnss'), -r.cnss, -r.cnss/12]);
+  ws.addRow([t('ir'), -r.ir, -r.ir/12]);
+  ws.addRow([]);
+  ws.addRow([t('net'), r.net, r.net/12]).font = {bold:true};
+  const buf = await wb.xlsx.writeBuffer();
+  const blob = new Blob([buf], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `Rapport-AutoEntrepreneur-${r.net.toFixed(0)}MAD.xlsx`; a.click();
+}
+
+document.getElementById('exportBtn').addEventListener('click', exportReport);
+renderFAQ();
+</script>
+</body>
+</html>
