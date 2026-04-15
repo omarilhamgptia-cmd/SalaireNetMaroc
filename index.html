@@ -382,12 +382,12 @@ const FAQS = {
 // --- CALCULATION ENGINE (PRESERVED) ---
 function calcIR(annualTaxable) {
   const b = [
-    {l:30000, r:0,    s:0},
-    {l:50000, r:0.10, s:3000},
-    {l:60000, r:0.20, s:8000},
-    {l:80000, r:0.30, s:14000},
-    {l:180000,r:0.34, s:17200},
-    {l:Infinity,r:0.38,s:24400}
+    {l:40000,    r:0,    s:0},
+    {l:60000,    r:0.10, s:4000},
+    {l:80000,    r:0.20, s:10000},
+    {l:100000,   r:0.30, s:18000},
+    {l:180000,   r:0.34, s:22000},
+    {l:Infinity, r:0.37, s:27400}
   ];
   let rate=0, ded=0;
   for(let i=0; i<b.length; i++){
@@ -398,12 +398,12 @@ function calcIR(annualTaxable) {
 
 function getBracketData(annualTaxable) {
   const steps = [
-    {m:0,      M:30000,  r:0},
-    {m:30000,  M:50000,  r:0.10},
-    {m:50000,  M:60000,  r:0.20},
-    {m:60000,  M:80000,  r:0.30},
-    {m:80000,  M:180000, r:0.34},
-    {m:180000, M:Infinity,r:0.38}
+    {m:0,      M:40000,  r:0},
+    {m:40000,  M:60000,  r:0.10},
+    {m:60000,  M:80000,  r:0.20},
+    {m:80000,  M:100000, r:0.30},
+    {m:100000, M:180000, r:0.34},
+    {m:180000, M:Infinity,r:0.37}
   ];
   return steps.map(s => {
     const inBracket = Math.max(0, Math.min(annualTaxable, s.M) - s.m);
@@ -422,7 +422,7 @@ function compute(base) {
   const cnssM = Math.min(brutImp, 6000) * 0.0448;
   const amoM = brutImp * 0.0226;
   const brutImpA = brutImp * 12;
-  const abA = brutImpA <= 78000 ? brutImpA * 0.35 : Math.min(brutImpA * 0.25, 35000);
+  const abA = brutImpA <= 78000 ? Math.min(brutImpA * 0.35, 30000) : Math.min(brutImpA * 0.25, 35000);
   const taxA = Math.max(0, brutImpA - (cnssM * 12) - (amoM * 12) - abA);
   const irA = calcIR(taxA);
   const irM = irA / 12;
