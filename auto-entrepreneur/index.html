@@ -62,7 +62,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .cross-nav-pill{background:#2D5A42;color:#fff;text-decoration:none;padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:600;white-space:nowrap}
 .excel-banner{background:#2D5A42;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
 
-.hero{position:relative;height:380px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
+.hero{position:relative;height:460px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.85}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,24,22,1) 0%,rgba(26,24,22,0.4) 60%,transparent 100%)}
 .hero-c{position:relative;padding:40px;max-width:1260px;margin:0 auto;width:100%}
@@ -190,7 +190,7 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
 }
 
 @media(max-width:600px){
-  .hero{height:300px}
+  .hero{height:340px}
   .hero-c{padding:24px}
   .totbar{grid-template-columns:1fr}
   .cross-nav-pill{font-size:0.7rem;padding:6px 12px}
@@ -216,12 +216,77 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
 </header>
 
 <section class="hero">
-  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663300312701/GIEuyqhwqlCTlgzb.png" alt="Entrepreneuriat Maroc">
+  <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#1A1816"/>
+        <stop offset="70%" stop-color="#0F0C10"/>
+        <stop offset="100%" stop-color="#4A1C27"/>
+      </linearGradient>
+      <radialGradient id="star" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 120) scale(4)">
+        <stop offset="0%" stop-color="#EAC4A8" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#EAC4A8" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="10" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <rect width="1400" height="560" fill="url(#sky)" />
+    <g opacity="0.9">
+      <circle cx="220" cy="90" r="2.5" fill="#EAC4A8" opacity="0.9" />
+      <circle cx="320" cy="45" r="2" fill="#EAC4A8" opacity="0.7" />
+      <circle cx="460" cy="120" r="1.8" fill="#EAC4A8" opacity="0.75" />
+      <circle cx="900" cy="60" r="2.2" fill="#EAC4A8" opacity="0.85" />
+      <circle cx="1180" cy="100" r="2.7" fill="#EAC4A8" opacity="0.8" />
+      <circle cx="1050" cy="150" r="1.6" fill="#EAC4A8" opacity="0.6" />
+    </g>
+    <path d="M0 420H1400V560H0V420Z" fill="#0D0B0E"/>
+    <path d="M1400 420H0L120 320H520L600 380H720L780 320H1040L1120 380H1320L1400 320V420Z" fill="#1E161A"/>
+    <path d="M160 320H240L240 240H320L320 280H400V320H480V220H560V320H640V260H720V320H800V180H880V320H960V220H1040V320H1120V260H1200V320H1280V240H1360V320H1400V560H0V320H160Z" fill="#251F1B"/>
+    <path d="M180 320H240V280H180V320Z" fill="#C14A1D" opacity="0.85"/>
+    <path d="M240 280H280V240H240V280Z" fill="#EAC4A8" opacity="0.8"/>
+    <path d="M320 280H360V240H320V280Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M560 240H620V220H560V240Z" fill="#EAC4A8" opacity="0.8"/>
+    <path d="M720 180H760V140H720V180Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M840 320H900V260H840V320Z" fill="#EAC4A8" opacity="0.75"/>
+    <path d="M980 320H1020V260H980V320Z" fill="#C14A1D" opacity="0.9"/>
+    <path d="M1120 260H1160V220H1120V260Z" fill="#EAC4A8" opacity="0.8"/>
+    <path d="M1240 320H1280V260H1240V320Z" fill="#C14A1D" opacity="0.9"/>
+    <path d="M440 320H520V200H440V320Z" fill="#2A2320"/>
+    <path d="M440 260H520V220H440V260Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M520 320H560V260H520V320Z" fill="#EAC4A8" opacity="0.75"/>
+    <path d="M580 320H620V280H580V320Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M680 320H720V260H680V320Z" fill="#EAC4A8" opacity="0.8"/>
+    <path d="M1000 320H1040V240H1000V320Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M1080 320H1120V260H1080V320Z" fill="#EAC4A8" opacity="0.65"/>
+    <path d="M1160 320H1200V220H1160V320Z" fill="#C14A1D" opacity="0.85"/>
+    <path d="M200 320H240V260H200V320Z" fill="#251F1B"/>
+    <path d="M320 320H360V260H320V320Z" fill="#251F1B"/>
+    <path d="M660 320H700V260H660V320Z" fill="#251F1B"/>
+    <path d="M740 320H780V280H740V320Z" fill="#251F1B"/>
+    <path d="M920 320H960V260H920V320Z" fill="#251F1B"/>
+    <path d="M1260 320H1300V260H1260V320Z" fill="#251F1B"/>
+    <path d="M240 220C260 220 260 200 280 200C300 200 300 220 320 220C340 220 340 180 360 180C380 180 380 220 400 220" stroke="#EAC4A8" stroke-width="8" fill="none" opacity="0.6"/>
+    <path d="M80 320H120V280H80V320Z" fill="#C14A1D" opacity="0.95"/>
+    <path d="M980 220L1020 180L1060 220" stroke="#EAC4A8" stroke-width="10" fill="none" opacity="0.7"/>
+    <path d="M420 220L460 180L500 220" stroke="#C14A1D" stroke-width="12" fill="none" opacity="0.65"/>
+    <path d="M580 240H620V220H580V240Z" fill="#EAC4A8" opacity="0.6"/>
+    <path d="M620 220H660V200H620V220Z" fill="#C14A1D" opacity="0.55"/>
+    <path d="M980 320H1040V240H980V320Z" fill="#251F1B"/>
+    <path d="M1120 320H1180V260H1120V320Z" fill="#251F1B"/>
+    <rect x="520" y="340" width="120" height="60" fill="#EAC4A8" opacity="0.18"/>
+    <rect x="860" y="340" width="100" height="40" fill="#C14A1D" opacity="0.2"/>
+    <rect x="1180" y="340" width="90" height="50" fill="#EAC4A8" opacity="0.14"/>
+    <circle cx="1150" cy="400" r="20" fill="#EAC4A8" opacity="0.1"/>
+    <circle cx="1360" cy="430" r="15" fill="#C14A1D" opacity="0.12"/>
+  </svg>
   <div class="hero-ov"></div>
   <div class="hero-c">
     <div class="hero-ey" data-fr="Outil de Référence 2026" data-en="Reference Tool 2026">Outil de Référence 2026</div>
     <h1 class="hero-t" data-fr="Calculateur <em>Auto-Entrepreneur</em> Maroc" data-en="Morocco <em>Self-Employed</em> Calculator">Calculateur <em>Auto-Entrepreneur</em> Maroc</h1>
-    <p class="hero-s" data-fr="Estimez vos revenus nets en tant qu'auto-entrepreneur. CNSS, IR 0.5%/1%, seuil 80 000 DH selon la loi de Finances 2026." data-en="Estimate your net income as a self-employed person. CNSS, IR 0.5%/1%, 80,000 DH threshold according to 2026 Finance Law.">Estimez vos revenus nets en tant qu'auto-entrepreneur selon la loi de Finances 2026.</p>
+    <p class="hero-s" data-fr="Simulez votre IR, CNSS et la règle des 80 000 DH selon les barèmes officiels 2026." data-en="Estimate your net income as a self-employed person. CNSS, IR 0.5%/1%, 80,000 DH threshold according to 2026 Finance Law.">Simulez votre IR, CNSS et la règle des 80 000 DH selon les barèmes officiels 2026.</p>
   </div>
 </section>
 
@@ -296,7 +361,7 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
 
     <div class="alert">
       <h4 data-fr="⚠️ Obligations Auto-Entrepreneur" data-en="⚠️ Self-Employed Obligations">⚠️ Obligations Auto-Entrepreneur</h4>
-      <p data-fr="Vous devez déclarer vos revenus annuellement. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD." data-en="You must declare your income annually. CNSS mandatory if income > 24,000 MAD/year. Progressive IR 0.5%/1% beyond 80,000 MAD.">Vous devez déclarer vos revenus annuellement. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD.</p>
+      <p data-fr="Déclarez votre CA trimestriellement sur ae.gov.ma. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD." data-en="Declare your turnover quarterly on ae.gov.ma. CNSS mandatory if income > 24,000 MAD/year. Progressive IR 0.5%/1% beyond 80,000 MAD.">Déclarez votre CA trimestriellement sur ae.gov.ma. CNSS obligatoire si revenus > 24 000 MAD/an. IR progressif 0.5%/1% au-delà de 80 000 MAD.</p>
     </div>
 
     <div class="card">
@@ -431,7 +496,7 @@ const FAQS = {
     {q: "Qu'est-ce qu'un auto-entrepreneur au Maroc ?", a: "L'auto-entrepreneur est un régime simplifié pour les travailleurs indépendants avec des cotisations sociales réduites et une fiscalité avantageuse."},
     {q: "Quel est le seuil pour l'IR en 2026 ?", a: "L'impôt sur le revenu est de 0.5% pour les revenus ≤ 80 000 MAD/an, et 1% pour les revenus supérieurs."},
     {q: "La CNSS est-elle obligatoire ?", a: "Oui, si vos revenus dépassent 24 000 MAD/an. Le taux est de 4.48% sur vos revenus bruts."},
-    {q: "Comment déclarer mes revenus ?", a: "Vous devez déclarer annuellement vos revenus auprès de l'administration fiscale et de la CNSS."}
+    {q: "Comment déclarer mes revenus ?", a: "Déclarez votre CA trimestriellement sur ae.gov.ma. Le paiement IR et CNSS se fait en ligne chaque trimestre."}
   ],
   en: [
     {q: "What is a self-employed person in Morocco?", a: "The self-employed regime is a simplified system for independent workers with reduced social contributions and favorable taxation."},
