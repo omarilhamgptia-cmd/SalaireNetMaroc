@@ -297,19 +297,19 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
         <article class="cluster-item">
           <h3 data-fr="SMIG 2026 au Maroc" data-en="2026 SMIG in Morocco">SMIG 2026 au Maroc</h3>
           <p data-fr="Le Salaire Minimum Interprofessionnel Garanti (SMIG) a été revalorisé. Découvrez les nouveaux montants horaires et mensuels." data-en="The Guaranteed Minimum Wage (SMIG) has been updated. Discover the new hourly and monthly rates.">Le Salaire Minimum (SMIG) a été revalorisé. Découvrez les nouveaux montants.</p>
-          <a href="#smig" class="cluster-link" data-fr="En savoir plus" data-en="Read more">En savoir plus →</a>
+          <a href="/smig-maroc-2026/" class="cluster-link" data-fr="En savoir plus" data-en="Read more">En savoir plus →</a>
         </article>
         
         <article class="cluster-item">
           <h3 data-fr="Cotisations CNSS & AMO" data-en="CNSS & AMO Contributions">Cotisations CNSS & AMO</h3>
           <p data-fr="Comprendre le calcul de la CNSS et de l'AMO sur votre bulletin de paie. Plafonds, taux et prestations sociales." data-en="Understand CNSS and AMO calculations on your pay slip. Caps, rates, and social benefits.">Comprendre le calcul de la CNSS et de l'AMO sur votre bulletin de paie.</p>
-          <a href="#cnss" class="cluster-link" data-fr="Voir les détails" data-en="View details">Voir les détails →</a>
+          <a href="/smig-maroc-2026/#cnss" class="cluster-link" data-fr="Voir les détails" data-en="View details">Voir les détails →</a>
         </article>
         
         <article class="cluster-item">
           <h3 data-fr="Primes & Indemnités" data-en="Allowances & Bonuses">Primes & Indemnités</h3>
           <p data-fr="Quelles primes sont exonérées d'impôts ? Transport, logement, panier : le guide complet des indemnités au Maroc." data-en="Which allowances are tax-exempt? Transport, housing, meal: the complete guide to allowances in Morocco.">Quelles primes sont exonérées d'impôts ? Transport, logement, panier...</p>
-          <a href="#primes" class="cluster-link" data-fr="Consulter le guide" data-en="Check guide">Consulter le guide →</a>
+          <a href="/auto-entrepreneur/" class="cluster-link" data-fr="Consulter le guide" data-en="Check guide">Consulter le guide →</a>
         </article>
       </div>
     </section>
@@ -367,12 +367,12 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
   <div class="footer-brand">Salaire<em>Maroc</em></div>
   <nav class="footer-links">
     <a href="#calculator" data-fr="Calculateur" data-en="Calculator">Calculateur</a>
-    <a href="#smig" data-fr="Guide SMIG" data-en="SMIG Guide">Guide SMIG</a>
-    <a href="#cnss" data-fr="Détails CNSS" data-en="CNSS Details">Détails CNSS</a>
+    <a href="/smig-maroc-2026/" data-fr="Guide SMIG" data-en="SMIG Guide">Guide SMIG</a>
+    <a href="/smig-maroc-2026/#cnss" data-fr="Détails CNSS" data-en="CNSS Details">Détails CNSS</a>
     <a href="#" data-fr="Mentions Légales" data-en="Legal">Mentions Légales</a>
     <a href="#" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
   </nav>
-  <p style="font-size:0.75rem;opacity:0.5">© 2026 SalaireMaroc.ma · Outil indépendant non-affilié aux organismes étatiques. Mise à jour : Avril 2026.</p>
+  <p style="font-size:0.75rem;opacity:0.5">© 2026 CalculateurDuMaroc.com · Outil indépendant non-affilié aux organismes étatiques. Mise à jour : Avril 2026.</p>
 </footer>
 
 <script>
@@ -591,7 +591,7 @@ async function exportBDP() {
   const wb = new ExcelJS.Workbook();
   const ws = wb.addWorksheet('Bulletin de Paie');
   ws.columns = [{width:35}, {width:15}, {width:15}];
-  ws.addRow(['BULLETIN DE PAIE - SALAIREMAROC.MA']).font = {bold:true};
+  ws.addRow(['BULLETIN DE PAIE - CALCULATEURDUMAROC.COM']).font = {bold:true};
   ws.addRow(['Date: ' + new Date().toLocaleDateString()]);
   ws.addRow([]);
   ws.addRow(['Désignation', 'Mensuel', 'Annuel']);
