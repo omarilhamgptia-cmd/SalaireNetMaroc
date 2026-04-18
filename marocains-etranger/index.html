@@ -20,7 +20,7 @@
 <meta property="og:description" content="Marocains résidant à l'étranger : calculez votre salaire net au Maroc, simulez vos impôts AE et comparez avec votre pays de résidence. Outils gratuits 2026.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_MA">
-<meta name="keywords" content="MRE salaire Maroc, marocains résidant étranger, calculateur salaire MRE, impôt Maroc expatrié">
+<meta name="keywords" content="MRE salaire Maroc, marocains résidant étranger, calculateur salaire MRE, impôt Maroc expatrié, double imposition Maroc France">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://calculateurdumaroc.com/marocains-etranger/">
 <meta property="og:url" content="https://calculateurdumaroc.com/marocains-etranger/">
@@ -31,6 +31,54 @@
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Accueil","item":"https://calculateurdumaroc.com/"},
     {"@type":"ListItem","position":2,"name":"Marocains à l'Étranger","item":"https://calculateurdumaroc.com/marocains-etranger/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Puis-je créer une auto-entreprise au Maroc depuis la France ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, si vous disposez d'une CIN marocaine valide et d'un numéro de téléphone marocain actif. L'inscription se fait entièrement en ligne sur ae.gov.ma en 15 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment calculer mon salaire net marocain depuis l'étranger ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Utilisez notre calculateur gratuit : entrez votre salaire brut en DH, il calcule automatiquement CNSS 4,48%, AMO 2,26% et IR selon le barème 2026. Résultat instantané, sans inscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Suis-je imposé deux fois sur mes revenus marocains ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. La convention fiscale franco-marocaine évite la double imposition. Vos revenus marocains sont imposés au Maroc uniquement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quel est le SMIG au Maroc en 2026 en euros ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le SMIG marocain est de 3 422,72 DH/mois soit environ 311 € brut. Net après cotisations : ~2 890 DH soit ~262 €."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je transférer librement de l'argent vers le Maroc ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, les transferts MRE sont libres et sans plafond légal. Services recommandés : Wise, Western Union, ou virement SWIFT."
+      }
+    }
   ]
 }
 </script>
@@ -60,16 +108,19 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .excel-banner{background:#2D5A42;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
 
 .hero{position:relative;height:460px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,24,22,1) 0%,rgba(26,24,22,0.7) 100%)}
+.hero-ov{position:absolute;inset:0}
 .hero-c{position:relative;padding:40px;max-width:1260px;margin:0 auto;width:100%}
 .hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
 .hero-t{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:600;color:#FFF;line-height:1.2}
 .hero-t em{font-style:italic;color:var(--terra2);font-weight:400}
 .hero-s{color:rgba(255,255,255,0.85);font-size:1rem;margin-top:16px;max-width:600px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hero-badges span{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:6px 12px;border-radius:20px;font-size:0.8rem;font-weight:500}
 
 .page-wrap{max-width:1260px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 300px;gap:32px}
 .card{background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:24px}
-.card h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);margin-bottom:16px}
+.card-h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);margin-bottom:8px}
+.card-sub{color:var(--ink3);font-size:0.9rem;margin-bottom:20px}
 .card p{margin-bottom:16px;color:var(--ink2);line-height:1.8}
 
 .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
@@ -78,6 +129,25 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .link-card-label{font-size:0.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:6px;font-weight:700}
 .link-card-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:6px}
 .link-card-desc{font-size:0.875rem;color:var(--ink3)}
+
+table{width:100%;border-collapse:collapse;margin:16px 0}
+table thead tr{background:var(--ink);color:var(--white)}
+table th{padding:12px 14px;text-align:left;font-weight:700;font-size:0.9rem}
+table td{padding:12px 14px;border-bottom:1px solid var(--cream2);font-size:0.9rem}
+table tr:hover{background:var(--cream2)}
+.table-note{font-size:0.8rem;color:var(--ink3);margin-top:12px;font-style:italic}
+
+.info-list{list-style:none;padding:0;margin:0}
+.info-list li{padding:10px 0;border-bottom:1px solid var(--cream2);color:var(--ink2);line-height:1.7;padding-left:20px;position:relative}
+.info-list li::before{content:"→";position:absolute;left:0;color:var(--terra);font-weight:700}
+.info-list li:last-child{border-bottom:none}
+
+.faq-item{border-bottom:1px solid var(--rule);padding:20px 0;cursor:pointer}
+.faq-q{font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--terra)}
+.faq-a{max-height:0;overflow:hidden;transition:0.3s;font-size:0.95rem;color:var(--ink2);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;margin-top:12px;padding-bottom:12px}
+.faq-item.open .faq-q::after{content:'−'}
 
 .ad-container{background:var(--adbg);border:1px dashed var(--adline);border-radius:var(--radius);padding:8px;margin-bottom:24px;text-align:center}
 .ad-label{display:block;font-size:0.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
@@ -95,6 +165,16 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .footer-links a{color:var(--terra2);text-decoration:none;font-size:0.95rem;transition:0.2s}
 .footer-links a:hover{color:#fff}
 
+.maroc-banner{position:relative;width:100%;height:200px;overflow:hidden;margin:40px 0}
+.maroc-banner img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.maroc-banner-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;letter-spacing:1px}
+
+.footer-photo{position:relative;width:100%;height:180px;overflow:hidden}
+.footer-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.footer-photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;font-weight:600;letter-spacing:1px;text-align:center;padding:16px}
+
+.adsbygoogle{display:none!important}
+
 @media(max-width:900px){
   .page-wrap{grid-template-columns:1fr;gap:24px}
   .sidebar{position:static;top:auto}
@@ -104,6 +184,8 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
   .card{padding:16px}
   .page-wrap{padding:16px 12px}
   .excel-banner{flex-direction:column;text-align:center;gap:12px;padding:12px 16px}
+  .maroc-banner{height:160px}
+  .maroc-banner-overlay{font-size:1rem}
 }
 </style>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="L6V1BVm83qFqmSdHfe4u1Q" async></script>
@@ -122,33 +204,36 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
   <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#1A1816"/>
-        <stop offset="70%" stop-color="#0F0C10"/>
-        <stop offset="100%" stop-color="#4A1C27"/>
+        <stop offset="0%" stop-color="#1A1816"/><stop offset="70%" stop-color="#0F0C10"/><stop offset="100%" stop-color="#4A1C27"/>
       </linearGradient>
     </defs>
     <rect width="1400" height="560" fill="url(#sky)" />
     <g opacity="0.9">
-      <circle cx="220" cy="90" r="2.5" fill="#EAC4A8" opacity="0.9" />
-      <circle cx="320" cy="45" r="2" fill="#EAC4A8" opacity="0.7" />
-      <circle cx="460" cy="120" r="1.8" fill="#EAC4A8" opacity="0.75" />
-      <circle cx="900" cy="60" r="2.2" fill="#EAC4A8" opacity="0.85" />
-      <circle cx="1180" cy="100" r="2.7" fill="#EAC4A8" opacity="0.8" />
-      <circle cx="1050" cy="150" r="1.6" fill="#EAC4A8" opacity="0.6" />
+      <circle cx="220" cy="90" r="2.5" fill="#EAC4A8" opacity="0.9" /><circle cx="320" cy="45" r="2" fill="#EAC4A8" opacity="0.7" />
+      <circle cx="460" cy="120" r="1.8" fill="#EAC4A8" opacity="0.75" /><circle cx="900" cy="60" r="2.2" fill="#EAC4A8" opacity="0.85" />
+      <circle cx="1180" cy="100" r="2.7" fill="#EAC4A8" opacity="0.8" /><circle cx="1050" cy="150" r="1.6" fill="#EAC4A8" opacity="0.6" />
     </g>
     <path d="M0 420H1400V560H0V420Z" fill="#0D0B0E"/>
     <path d="M1400 420H0L120 320H520L600 380H720L780 320H1040L1120 380H1320L1400 320V420Z" fill="#171215"/>
     <path d="M160 320H240L240 240H320L320 280H400V320H480V220H560V320H640V260H720V320H800V180H880V320H960V220H1040V320H1120V260H1200V320H1280V240H1360V320H1400V560H0V320H160Z" fill="#251F1B"/>
     <path d="M180 320H240V280H180V320Z" fill="#C14A1D" opacity="0.85"/>
     <path d="M240 280H280V240H240V280Z" fill="#EAC4A8" opacity="0.8"/>
-    <path d="M980 320H1040V240H980V320Z" fill="#C14A1D" opacity="0.7"/>
+    <path d="M840 320H900V260H840V320Z" fill="#EAC4A8" opacity="0.75"/>
+    <path d="M980 320H1020V260H980V320Z" fill="#C14A1D" opacity="0.9"/>
     <path d="M1160 320H1200V220H1160V320Z" fill="#C14A1D" opacity="0.85"/>
+    <path d="M80 320H120V280H80V320Z" fill="#C14A1D" opacity="0.95"/>
   </svg>
   <div class="hero-ov"></div>
   <div class="hero-c">
     <div class="hero-ey">Ressources pour MRE 2026</div>
     <h1 class="hero-t">Outils Fiscaux Maroc pour <em>Marocains Résidant à l'Étranger</em></h1>
-    <p class="hero-s">Vous vivez en France, Belgique, Espagne ou Canada ? Ces calculateurs sont faits pour vous.</p>
+    <p class="hero-s">Vous vivez en France, Belgique, Espagne ou Canada ? Calculez votre salaire net au Maroc, simulez vos charges AE et comparez les systèmes fiscaux. 100% gratuit, sans inscription.</p>
+    <div class="hero-badges">
+      <span>✅ 100% Gratuit</span>
+      <span>⚡ Résultat instantané</span>
+      <span>🇲🇦 Conforme Maroc 2026</span>
+      <span>🔒 Sans inscription</span>
+    </div>
   </div>
 </section>
 
@@ -174,6 +259,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 
 <div class="page-wrap">
   <main>
+
     <div class="ad-container">
       <span class="ad-label">Publicité</span>
       <ins class="adsbygoogle"
@@ -186,48 +272,151 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
     </div>
 
     <div class="card">
-      <h2>Vos outils fiscaux Maroc</h2>
-      <p>Que vous envisagiez de revenir au Maroc, d'y créer une activité en tant qu'auto-entrepreneur ou simplement de comparer les niveaux de salaires, ces outils vous donnent une réponse instantanée.</p>
+      <h2 class="card-h2">Vos outils gratuits</h2>
+      <p class="card-sub">Calculateurs 100% conformes à la Loi de Finances Maroc 2026</p>
       <div class="link-grid">
         <a href="/" class="link-card">
           <div class="link-card-label">Salarié</div>
-          <div class="link-card-title">Calculateur salaire net</div>
-          <div class="link-card-desc">Simulez votre salaire net à partir du brut : CNSS, AMO, IR calculés automatiquement.</div>
+          <div class="link-card-title">Calculateur Salaire Net</div>
+          <div class="link-card-desc">Net à partir du brut : CNSS, AMO, IR calculés instantanément.</div>
         </a>
         <a href="/auto-entrepreneur/" class="link-card">
           <div class="link-card-label">Auto-Entrepreneur</div>
-          <div class="link-card-title">Calculateur AE</div>
-          <div class="link-card-desc">IR 0,5% commerce ou 1% services, CNSS 4,48% et règle des 80 000 DH.</div>
+          <div class="link-card-title">Simulateur Auto-Entrepreneur</div>
+          <div class="link-card-desc">IR 0,5% commerce ou 1% services, CNSS et règle des 80 000 DH.</div>
         </a>
         <a href="/smig-maroc-2026/" class="link-card">
           <div class="link-card-label">Référence</div>
-          <div class="link-card-title">SMIG 2026</div>
-          <div class="link-card-desc">Salaire minimum au Maroc : 3 422,72 DH brut/mois — net, historique et calcul.</div>
+          <div class="link-card-title">SMIG Maroc 2026</div>
+          <div class="link-card-desc">3 422,72 DH brut/mois — montant officiel, net et historique.</div>
         </a>
         <a href="/bareme-ir-maroc-2026/" class="link-card">
           <div class="link-card-label">Fiscalité</div>
           <div class="link-card-title">Barème IR 2026</div>
-          <div class="link-card-desc">Les 6 tranches progressives de 0% à 37% avec exemples de calcul complets.</div>
+          <div class="link-card-desc">Les 6 tranches progressives de 0% à 37% avec exemples complets.</div>
         </a>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Pourquoi ces outils pour les MRE ?</h2>
-      <p>Les Marocains résidant à l'étranger qui envisagent un retour, un investissement ou la création d'une activité au Maroc ont besoin de repères fiscaux clairs. Ces calculateurs, 100% gratuits et sans inscription, répondent en quelques secondes.</p>
-      <p>Les taux CNSS (4,48%), AMO (2,26%) et les tranches IR sont ceux en vigueur selon la Loi de Finances 2026.</p>
+    <div class="maroc-banner">
+      <img src="/assets/images/arches-tinmal.jpg" alt="Arches de Tinmal — Grande Mosquée du Maroc" loading="lazy" width="1400" height="400">
+      <div class="maroc-banner-overlay">
+        <span>Vos racines, vos droits, vos outils</span>
+      </div>
     </div>
+
+    <div class="card">
+      <h2 class="card-h2">Salaires Maroc en Euros (taux avril 2026)</h2>
+      <p class="card-sub">Taux de conversion : 1 EUR = 11 MAD (avril 2026)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Salaire brut MAD</th>
+            <th>Salaire net MAD</th>
+            <th>Équivalent EUR</th>
+            <th>Profil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3 422 DH</td>
+            <td>2 890 DH</td>
+            <td><strong style="color:var(--sage)">~262 €</strong></td>
+            <td>SMIG</td>
+          </tr>
+          <tr>
+            <td>5 000 DH</td>
+            <td>4 150 DH</td>
+            <td><strong style="color:var(--sage)">~377 €</strong></td>
+            <td>Junior</td>
+          </tr>
+          <tr>
+            <td>8 000 DH</td>
+            <td>6 480 DH</td>
+            <td><strong style="color:var(--sage)">~589 €</strong></td>
+            <td>Confirmé</td>
+          </tr>
+          <tr>
+            <td>12 000 DH</td>
+            <td>9 420 DH</td>
+            <td><strong style="color:var(--sage)">~856 €</strong></td>
+            <td>Senior</td>
+          </tr>
+          <tr style="background:var(--sage-l)">
+            <td><strong>20 000 DH</strong></td>
+            <td><strong>15 200 DH</strong></td>
+            <td><strong style="color:var(--sage)">~1 381 €</strong></td>
+            <td><strong>Manager</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-note">Taux de conversion : 1 EUR = 11 MAD (avril 2026) — à titre indicatif, non contractuel.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h2">Ce que vous devez savoir si vous êtes MRE</h2>
+      <p class="card-sub">Fiscalité, transferts et statut auto-entrepreneur depuis l'étranger</p>
+      <ul class="info-list">
+        <li>Convention fiscale France-Maroc : évite la double imposition</li>
+        <li>Revenus de source marocaine déclarés au Maroc uniquement</li>
+        <li>Transferts d'argent vers le Maroc : aucune limite légale</li>
+        <li>Auto-entrepreneur au Maroc depuis l'étranger : possible avec CIN valide + numéro marocain</li>
+        <li>IR sur salaire marocain : barème progressif 0% à 38%</li>
+        <li>SMIG 2026 : 3 422,72 DH/mois (secteur privé)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="card-h2">Questions Fréquentes MRE</h2>
+      <p class="card-sub">Fiscalité et démarches pour les Marocains du monde</p>
+
+      <div class="faq-item open">
+        <div class="faq-q">Puis-je créer une auto-entreprise au Maroc depuis la France ?</div>
+        <div class="faq-a">Oui, si vous disposez d'une CIN marocaine valide et d'un numéro de téléphone marocain actif. L'inscription se fait entièrement en ligne sur ae.gov.ma en 15 minutes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment calculer mon salaire net marocain depuis l'étranger ?</div>
+        <div class="faq-a">Utilisez notre calculateur gratuit : entrez votre salaire brut en DH, il calcule automatiquement CNSS 4,48%, AMO 2,26% et IR selon le barème 2026. Résultat instantané, sans inscription.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Suis-je imposé deux fois sur mes revenus marocains ?</div>
+        <div class="faq-a">Non. La convention fiscale franco-marocaine évite la double imposition. Vos revenus marocains sont imposés au Maroc uniquement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quel est le SMIG au Maroc en 2026 en euros ?</div>
+        <div class="faq-a">Le SMIG marocain est de 3 422,72 DH/mois soit environ 311 € brut. Net après cotisations : ~2 890 DH soit ~262 €.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Puis-je transférer librement de l'argent vers le Maroc ?</div>
+        <div class="faq-a">Oui, les transferts MRE sont libres et sans plafond légal. Services recommandés : Wise, Western Union, ou virement SWIFT.</div>
+      </div>
+    </div>
+
+    <nav style="border-top:2px solid #e0d5cc;padding:40px 24px;max-width:1260px;margin:40px auto 0" aria-label="Pages liées">
+      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;color:#231f1b">Voir aussi</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px">
+        <li><a href="/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">🧮 Calculateur Salaire Net</a></li>
+        <li><a href="/auto-entrepreneur/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">💼 Auto-Entrepreneur</a></li>
+        <li><a href="/smig-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">📊 SMIG 2026</a></li>
+        <li><a href="/bareme-ir-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">📋 Barème IR 2026</a></li>
+      </ul>
+    </nav>
+
   </main>
 
   <aside class="sidebar">
     <div class="sb-card">
       <h3 class="sb-title">Chiffres clés 2026</h3>
       <ul class="sb-list">
-        <li>SMIG mensuel : <strong>3 422,72 DH</strong></li>
-        <li>IR min. : <strong>0% (≤ 40 000 DH/an)</strong></li>
-        <li>IR max. : <strong>37%</strong></li>
+        <li>SMIG : <strong>3 422,72 DH/mois</strong></li>
+        <li>SMIG net : <strong>~2 890 DH (~262 €)</strong></li>
+        <li>CNSS salarié : <strong>4,48%</strong></li>
+        <li>AMO : <strong>2,26%</strong></li>
+        <li>IR min : <strong>0% (≤ 40 000 DH/an)</strong></li>
+        <li>IR max : <strong>37%</strong></li>
         <li>AE commerce : <strong>IR 0,5%</strong></li>
         <li>AE services : <strong>IR 1%</strong></li>
+        <li>Taux EUR/MAD : <strong>1 € = 11 MAD</strong></li>
       </ul>
     </div>
 
@@ -249,9 +438,23 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
     <a href="/auto-entrepreneur/">Auto-Entrepreneur</a>
     <a href="/smig-maroc-2026/">SMIG</a>
     <a href="/bareme-ir-maroc-2026/">Barème IR</a>
+    <a href="/marocains-etranger/">MRE</a>
+  </div>
+  <div class="footer-photo">
+    <img src="/assets/images/chefchaouen-bleu.jpg" alt="Chefchaouen — La Ville Bleue du Maroc" loading="lazy" width="1400" height="300">
+    <div class="footer-photo-overlay">
+      <p>🇲🇦 Fait avec fierté pour les Marocains du monde entier</p>
+    </div>
   </div>
   <p style="font-size:0.75rem;opacity:0.5">© 2026 CalculateurDuMaroc.com · Outil indépendant non-affilié aux organismes étatiques. Mise à jour : Avril 2026.</p>
 </footer>
 
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', function(){
+    this.classList.toggle('open');
+  });
+});
+</script>
 </body>
 </html>
