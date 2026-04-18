@@ -379,8 +379,11 @@ table tr:hover{background:var(--cream2)}
       <h2>Calculez votre transfert — Taux du jour</h2>
       <p class="card-sub">Mis à jour automatiquement</p>
       <div class="calc-row">
-        <label for="montant">Montant à envoyer (€)</label>
-        <input type="number" id="montant" value="500" min="1" max="100000">
+        <label for="montant">Montant à envoyer</label>
+        <div style="display:flex;gap:8px">
+          <input type="number" id="montant" value="500" min="1" max="100000" style="flex:1">
+          <select id="devise" style="width:auto;min-width:80px"></select>
+        </div>
       </div>
       <div class="calc-row">
         <label for="service">Service</label>
@@ -548,45 +551,84 @@ table tr:hover{background:var(--cream2)}
 </footer>
 
 <script>
-const SERVICES_CONFIG = {
-  wise:     { nom:'Wise',          frais:2.50, marge:0.995, delai:'Instantané', lien:'https://wise.com/fr/send-money/morocco',     badge:'Meilleur taux' },
-  wu:       { nom:'Western Union', frais:4.90, marge:0.975, delai:'0-1 jour',   lien:'https://www.westernunion.com',               badge:'' },
-  remitly:  { nom:'Remitly',       frais:3.99, marge:0.985, delai:'Instantané', lien:'https://www.remitly.com/fr/fr/morocco',       badge:'' },
-  wafacash: { nom:'Wafacash',      frais:5.00, marge:0.970, delai:'1-2 jours',  lien:'https://www.wafacash.com',                   badge:'' }
+const CURRENCIES = {
+  EUR: { label:'EUR — Euro 🇪🇺',       fallback:10.90 },
+  GBP: { label:'GBP — Livre sterling 🇬🇧', fallback:12.80 },
+  USD: { label:'USD — Dollar US 🇺🇸',   fallback:9.95  },
+  CAD: { label:'CAD — Dollar canadien 🇨🇦', fallback:7.20 },
+  AED: { label:'AED — Dirham UAE 🇦🇪',  fallback:2.71  }
 };
 
-let baseRate = null;
+const SERVICES_CONFIG = {
+  wise:     { nom:'Wise',          fraisFixe:0.56, fraisPct:0.0274, marge:0.9913, delai:'Instantané', lien:'https://wise.com/fr/send-money/morocco',   badge:'Meilleur taux' },
+  wu:       { nom:'Western Union', fraisFixe:4.90, fraisPct:0,      marge:0.975,  delai:'0-1 jour',   lien:'https://www.westernunion.com',              badge:'' },
+  remitly:  { nom:'Remitly',       fraisFixe:0,    fraisPct:0.020,  marge:0.985,  delai:'Instantané', lien:'https://www.remitly.com/fr/fr/morocco',     badge:'' },
+  wafacash: { nom:'Wafacash',      fraisFixe:5.00, fraisPct:0,      marge:0.970,  delai:'1-2 jours',  lien:'https://www.wafacash.com',                  badge:'' }
+};
+
+function getFrais(montant, key) {
+  const s = SERVICES_CONFIG[key];
+  return s.fraisFixe + montant * s.fraisPct;
+}
+
+let rates = {};
 let lastUpdated = '';
+let currentCurrency = 'EUR';
+
+function getBaseRate() {
+  return rates[currentCurrency] || CURRENCIES[currentCurrency].fallback;
+}
+
+function buildCurrencySelect() {
+  const sel = document.getElementById('devise');
+  if (!sel) return;
+  sel.innerHTML = Object.entries(CURRENCIES)
+    .map(([k,v]) => `<option value="${k}"${k===currentCurrency?' selected':''}>${v.label}</option>`)
+    .join('');
+  sel.addEventListener('change', function(){
+    currentCurrency = this.value;
+    updateRateBanner();
+    updateTable();
+    updateCalc();
+  });
+}
 
 async function fetchRate() {
   try {
-    const res = await fetch('https://open.er-api.com/v6/latest/EUR');
+    const res = await fetch('https://open.er-api.com/v6/latest/MAD');
     const data = await res.json();
-    baseRate = data.rates.MAD;
+    Object.keys(CURRENCIES).forEach(cur => {
+      if(data.rates[cur]) rates[cur] = 1 / data.rates[cur];
+    });
     const d = new Date(data.time_last_update_utc);
-    lastUpdated = d.toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    document.getElementById('liveRateText').innerHTML =
-      `<strong>Taux EUR/MAD du jour : ${baseRate.toFixed(4)}</strong> — Mis à jour le ${lastUpdated}`;
-    document.getElementById('rateDate').textContent = `Mis à jour le ${lastUpdated}`;
+    lastUpdated = d.toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric'});
+    updateRateBanner();
     updateTable();
     updateCalc();
     updateSidebar();
   } catch(e) {
-    document.getElementById('liveRateText').textContent = 'Taux temporairement indisponibles — données indicatives affichées';
-    baseRate = 10.90;
+    updateRateBanner();
     updateTable();
     updateCalc();
     updateSidebar();
   }
 }
 
+function updateRateBanner() {
+  const rate = getBaseRate();
+  const el = document.getElementById('liveRateText');
+  const rd = document.getElementById('rateDate');
+  if(el) el.innerHTML = `<strong>Taux ${currentCurrency}/MAD du jour : ${rate.toFixed(4)}</strong>${lastUpdated ? ' — Mis à jour le '+lastUpdated : ''}`;
+  if(rd) rd.textContent = lastUpdated ? 'Mis à jour le '+lastUpdated : 'Taux en direct';
+}
+
 function getServiceRate(key) {
-  return (baseRate || 10.90) * SERVICES_CONFIG[key].marge;
+  return getBaseRate() * SERVICES_CONFIG[key].marge;
 }
 
 function calcReceived(montant, key) {
-  const s = SERVICES_CONFIG[key];
-  return Math.round((montant - s.frais) * getServiceRate(key));
+  const frais = getFrais(montant, key);
+  return Math.round((montant - frais) * getServiceRate(key));
 }
 
 function updateTable() {
@@ -595,12 +637,13 @@ function updateTable() {
   const order = ['wise','remitly','wu','wafacash'];
   const rows = order.map(key => {
     const s = SERVICES_CONFIG[key];
+    const frais = getFrais(montant, key);
     const taux = getServiceRate(key);
     const recu = calcReceived(montant, key);
     const isWise = key === 'wise';
     return `<tr class="${isWise ? 'best-row' : ''}">
       <td><strong>${s.nom}</strong>${s.badge ? `<span class="badge-best">${s.badge}</span>` : ''}</td>
-      <td>${s.frais.toFixed(2)}€</td>
+      <td>${frais.toFixed(2)} ${currentCurrency}</td>
       <td>${taux.toFixed(4)}</td>
       <td><strong>${recu > 0 ? recu.toLocaleString('fr') : '—'} MAD</strong></td>
       <td>${s.delai}</td>
@@ -614,13 +657,14 @@ function updateCalc() {
   const montant = parseFloat(document.getElementById('montant').value) || 0;
   const key = document.getElementById('service').value;
   const s = SERVICES_CONFIG[key];
+  const frais = getFrais(montant, key);
   const taux = getServiceRate(key);
   const recu = calcReceived(montant, key);
   const box = document.getElementById('resultBox');
   box.style.display = recu > 0 ? 'block' : 'none';
   document.getElementById('recu').textContent = recu.toLocaleString('fr') + ' MAD';
   document.getElementById('detail').textContent =
-    `Frais ${s.nom} : ${s.frais.toFixed(2)}€ · Taux appliqué : ${taux.toFixed(4)} MAD/€`;
+    `Frais ${s.nom} : ${frais.toFixed(2)} ${currentCurrency} · Taux appliqué : ${taux.toFixed(4)} MAD/${currentCurrency}`;
 }
 
 function updateSidebar() {
@@ -628,15 +672,15 @@ function updateSidebar() {
   const ids  = ['sbWise','sbRemitly','sbWu','sbWafacash'];
   const labels = ['Wise','Remitly','Western Union','Wafacash'];
   keys.forEach((k,i) => {
-    const taux = getServiceRate(k);
-    document.getElementById(ids[i]).innerHTML =
-      `${labels[i]} : <strong>${taux.toFixed(4)}</strong>`;
+    const el = document.getElementById(ids[i]);
+    if(el) el.innerHTML = `${labels[i]} : <strong>${getServiceRate(k).toFixed(4)}</strong>`;
   });
 }
 
 document.getElementById('montant').addEventListener('input', () => { updateTable(); updateCalc(); });
 document.getElementById('service').addEventListener('change', updateCalc);
 
+buildCurrencySelect();
 fetchRate();
 setInterval(fetchRate, 3600000);
 
