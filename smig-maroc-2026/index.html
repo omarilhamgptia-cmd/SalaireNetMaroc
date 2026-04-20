@@ -99,15 +99,15 @@
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-.topbar{background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-.topbar-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;display:flex;align-items:center;gap:12px}
-.flag-ma{width:24px;height:16px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,0.2)}
+
+
+
 .flag-ma svg{width:100%;height:100%;display:block}
 .topbar-brand em{color:var(--terra2);font-style:italic}
-.cross-nav-pill{background:#2D5A42;color:#fff;text-decoration:none;padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:600;white-space:nowrap}
+
 .excel-banner{background:#2D5A42;color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
 
-.hero{position:relative;height:280px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
+.hero{padding-top:52px;position:relative;height:280px;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.3) 100%),linear-gradient(to bottom,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);}
 .hero-c{position:relative;z-index:2;padding:40px;max-width:1260px;margin:0 auto;width:100%}
 .hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
@@ -219,15 +219,9 @@ table tr:hover{background:var(--cream2)}
     </ul>
   </div>
 </nav>
-<header class="topbar">
-  <div class="topbar-brand">
-    <span class="flag-ma"><svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#C1272D"/><path d="M1.5.45l.155.478h.503l-.407.296.156.478-.407-.296-.407.296.156-.478-.407-.296h.503z" fill="none" stroke="#006233" stroke-width=".08" stroke-linejoin="round"/></svg></span>
-    Salaire<em>Maroc</em>
-  </div>
-  <a href="/#calculator" class="cross-nav-pill">Salarié ? Calculez votre net gratuit</a>
-</header>
 
-<section class="hero" style="padding-top:52px">
+
+<section class="hero">
   <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
