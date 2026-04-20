@@ -1,0 +1,8 @@
+{
+  "claude.nodePath": "C:\\Users\\ilham.ayoub\\node20\\node-v20.12.0-win-x64\\node.exe",
+  "claude.claudeCodePath": "C:\\Users\\ilham.ayoub\\node20\\node-v20.12.0-win-x64\\node_modules\\@anthropic-ai\\claude-code\\bin\\claude.exe",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Users\\ilham.ayoub\\node20\\node-v20.12.0-win-x64;${env:PATH}"
+  }
+}
