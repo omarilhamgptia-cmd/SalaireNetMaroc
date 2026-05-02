@@ -1,24 +1,27 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    let path = url.pathname;
+    const path = url.pathname;
 
-    // Try original request first
-    let response = await env.ASSETS.fetch(request);
+    // For directory paths, try index.html directly first
+    if (path.endsWith('/')) {
+      const indexUrl = new URL(request.url);
+      indexUrl.pathname = path + 'index.html';
+      const r = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
+      if (r.status !== 404 && r.status !== 403) return r;
+    }
 
-    // If 404 and path is a directory (ends with /), try index.html
-    if (response.status === 404) {
-      if (path.endsWith('/')) {
-        const indexUrl = new URL(request.url);
-        indexUrl.pathname = path + 'index.html';
-        response = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
-      }
-      // If path has no trailing slash, try adding / and index.html
-      if (response.status === 404 && !path.endsWith('/') && !path.includes('.')) {
-        const indexUrl = new URL(request.url);
-        indexUrl.pathname = path + '/index.html';
-        response = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
-      }
+    // Try original request
+    const response = await env.ASSETS.fetch(request);
+    if (response.status !== 404 && response.status !== 403) return response;
+
+    // Fallback: try /path/index.html
+    if (!path.includes('.')) {
+      const clean = path.endsWith('/') ? path : path + '/';
+      const indexUrl = new URL(request.url);
+      indexUrl.pathname = clean + 'index.html';
+      const r2 = await env.ASSETS.fetch(new Request(indexUrl.toString(), request));
+      if (r2.status !== 404 && r2.status !== 403) return r2;
     }
 
     return response;
