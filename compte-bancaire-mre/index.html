@@ -340,6 +340,14 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .footer-links a:hover{color:#fff}
 
 .adsbygoogle{display:none!important}
+
+/* Mobile nav fix */
+@media(max-width:700px){
+  .nav-toggle{display:flex!important}
+  .nav-links{display:none!important;position:fixed;top:52px;left:0;right:0;background:rgba(10,8,6,0.98);flex-direction:column!important;padding:8px;gap:2px;border-bottom:1px solid rgba(255,255,255,0.08);z-index:1999;max-height:calc(100vh - 52px);overflow-y:auto}
+  .nav-links.open{display:flex!important}
+  .nav-link{padding:12px 16px!important;font-size:0.95rem!important;border-radius:6px}
+}
 </style>
 <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7257192-370a-46f9-ae56-aeaf2f3928971.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
 </head>
