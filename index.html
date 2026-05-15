@@ -322,9 +322,9 @@ nav a[href*="/"][style*="border:1px solid #c8b8ae"]:hover{
 .dd-link-highlight svg{color:var(--terra2);opacity:0.8!important}
 .dd-link-mre .dd-link-icon{background:rgba(45,90,66,0.3)}
 
-.trust-strip-page{background:var(--cream2);border:1px solid var(--rule);border-radius:var(--radius);padding:12px 20px;margin-bottom:24px;font-size:0.82rem;color:var(--ink3);display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start;line-height:1.5}
+.trust-strip-page{background:#f5f3ef;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 20px;margin-bottom:24px;font-size:0.8rem;color:var(--ink3);display:flex;flex-wrap:wrap;gap:6px;align-items:center;line-height:1.5;border-radius:0}
 .trust-strip-page strong{color:var(--ink2)}
-.disclaimer-footer{background:var(--terra-l);border:1px solid var(--terra2);border-left:4px solid var(--terra);border-radius:var(--radius);padding:16px 20px;font-size:0.84rem;color:var(--ink2);margin:32px 0 16px;line-height:1.6}
+.disclaimer-footer{background:var(--cream2);border-top:1px solid var(--rule);padding:14px 20px;font-size:0.8rem;color:var(--ink3);margin:24px 0 8px;line-height:1.6;border-radius:0}
 .disclaimer-footer strong{color:var(--terra)}
 .source-block{font-size:0.78rem;color:var(--ink3);padding:10px 16px;border-top:1px solid var(--rule);margin-top:8px}
 /* === MOBILE PERFORMANCE === */
@@ -334,11 +334,12 @@ table{width:100%;max-width:100%}
 .comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Hero — always full height and readable */
-.hero{min-height:280px!important;height:auto!important}
-.hero-c{padding:80px 20px 40px!important}
-.hero-t{font-size:clamp(1.6rem,5vw,2.4rem)!important;line-height:1.25!important}
-.hero-s{font-size:0.95rem!important}
-.hero-badges{display:none}
+.hero{min-height:320px!important;height:auto!important;display:flex!important;align-items:flex-end!important}
+.hero-c{padding:80px 20px 36px!important;width:100%!important}
+.hero-t{font-size:clamp(1.5rem,5vw,2.2rem)!important;line-height:1.25!important;word-break:break-word!important}
+.hero-s{font-size:0.9rem!important;max-width:100%!important}
+.hero-badges{display:none!important}
+.hero-ey{font-size:0.72rem!important}
 
 /* Footer photo — keep visible */
 .footer-photo{height:160px!important;min-height:120px!important}
@@ -572,7 +573,7 @@ table{width:100%;max-width:100%}
 
     
     <div class="trust-strip-page">
-      <span>⚠️ <strong>Information indicative :</strong> Les calculs de salaire net sont basés sur les barèmes CNSS, AMO et IR de la Loi de Finances 2026. Ils sont fournis à titre indicatif et peuvent différer de votre bulletin de paie selon votre convention collective ou situation personnelle.</span>
+      <span><strong>Information indicative :</strong> Les calculs de salaire net sont basés sur les barèmes CNSS, AMO et IR de la Loi de Finances 2026. Ils sont fournis à titre indicatif et peuvent différer de votre bulletin de paie selon votre convention collective ou situation personnelle.</span>
     </div>
     <div class="card" id="calculator">
       <h2 class="card-h2" data-fr="Simulateur de Salaire" data-en="Salary Simulator">Simulateur de Salaire</h2>
