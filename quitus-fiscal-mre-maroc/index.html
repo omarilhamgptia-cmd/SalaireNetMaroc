@@ -277,7 +277,7 @@ table tr:hover{background:var(--cream2)}
 .sb-list li{margin-bottom:12px;color:var(--ink2);font-size:0.95rem;line-height:1.6}
 
 /* Maroc banner */
-.maroc-banner{position:relative;width:100%;height:200px;overflow:hidden;margin:40px 0}
+.maroc-banner{position:relative;width:100%;min-height:160px;overflow:hidden;margin:40px 0}
 .maroc-banner img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
 .maroc-banner-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;letter-spacing:1px}
 
@@ -288,7 +288,7 @@ table tr:hover{background:var(--cream2)}
 .footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px}
 .footer-links a{color:var(--terra2);text-decoration:none;font-size:0.95rem;transition:0.2s}
 .footer-links a:hover{color:#fff}
-.footer-photo{position:relative;width:100%;min-height:160px;overflow:hidden}
+.footer-photo{position:relative;width:100%;min-height:140px;overflow:hidden}
 .footer-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
 .footer-photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;font-weight:600;letter-spacing:1px;text-align:center;padding:16px}
 
@@ -325,7 +325,7 @@ table tr:hover{background:var(--cream2)}
   .card{padding:16px}
   .page-wrap{padding:16px 12px}
   .trust-strip{font-size:0.78rem}
-  .maroc-banner{height:160px}
+  .maroc-banner{min-height:160px}
 }
 
 /* Mega menu */
@@ -358,7 +358,7 @@ table{width:100%;max-width:100%}
 .comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Hero — always full height and readable */
-.hero{min-height:320px!important;height:auto!important;display:flex!important;align-items:flex-end!important}
+.hero{min-height:300px!important;height:auto!important;display:flex!important;align-items:flex-end!important}
 .hero-c{padding:80px 20px 36px!important;width:100%!important}
 .hero-t{font-size:clamp(1.5rem,5vw,2.2rem)!important;line-height:1.25!important;word-break:break-word!important}
 .hero-s{font-size:0.9rem!important;max-width:100%!important}
@@ -366,7 +366,7 @@ table{width:100%;max-width:100%}
 .hero-ey{font-size:0.72rem!important}
 
 /* Footer photo — keep visible */
-.footer-photo{height:160px!important;min-height:120px!important}
+.footer-photo{min-height:140px!important;min-height:120px!important}
 .footer-photo-overlay{font-size:0.85rem!important}
 
 /* Nav toggle — make it big and obvious */
@@ -469,7 +469,7 @@ table{width:100%;max-width:100%}
 </header>
 
 <section class="hero" style="padding-top:52px">
-  <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#1A1816"/><stop offset="70%" stop-color="#0F0C10"/><stop offset="100%" stop-color="#4A1C27"/>

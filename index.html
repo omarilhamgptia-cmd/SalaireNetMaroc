@@ -226,13 +226,13 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
 .faq-item.open .faq-q::after{content:'−'}
 
 @media(max-width:600px){
-  .hero{padding-top:52px;height:340px}
+  .hero{padding-top:52px;min-height:300px}
   .hero-c{padding:24px}
   .totbar{grid-template-columns:1fr}
   
   .excel-banner{flex-direction:column;text-align:center;gap:12px;padding:12px 16px}
 }
-.maroc-banner{position:relative;width:100%;height:200px;overflow:hidden;margin:40px 0}
+.maroc-banner{position:relative;width:100%;min-height:160px;overflow:hidden;margin:40px 0}
 .maroc-banner img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
 .maroc-banner-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;letter-spacing:1px}
 .trust-photo-section{position:relative;width:100%;height:250px;overflow:hidden;margin:48px 0;border-radius:12px}
@@ -240,7 +240,7 @@ td:last-child{text-align:right;font-weight:700;font-size:1.1rem}
 .trust-photo-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,58,30,0.75),rgba(0,0,0,0.5));display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;text-align:center;padding:24px}
 .trust-photo-overlay h2{font-size:1.6rem;margin-bottom:8px;font-family:'Cormorant Garamond',serif}
 .trust-photo-overlay p{font-size:1rem;opacity:0.9;letter-spacing:2px}
-.footer-photo{position:relative;width:100%;min-height:160px;overflow:hidden}
+.footer-photo{position:relative;width:100%;min-height:140px;overflow:hidden}
 .footer-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
 .footer-photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;font-weight:600;letter-spacing:1px;text-align:center;padding:16px}
 
@@ -302,7 +302,7 @@ nav a[href*="/"][style*="border:1px solid #c8b8ae"]:hover{
   box-shadow:0 4px 12px rgba(193,74,29,0.12)!important;
 }
 /* Footer photo */
-.footer-photo{position:relative;width:100%;min-height:160px;overflow:hidden;margin-top:24px}
+.footer-photo{position:relative;width:100%;min-height:140px;overflow:hidden;margin-top:24px}
 .footer-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
 .footer-photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;font-weight:600;letter-spacing:1px;text-align:center;padding:16px}
 
@@ -334,7 +334,7 @@ table{width:100%;max-width:100%}
 .comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Hero — always full height and readable */
-.hero{min-height:320px!important;height:auto!important;display:flex!important;align-items:flex-end!important}
+.hero{min-height:300px!important;height:auto!important;display:flex!important;align-items:flex-end!important}
 .hero-c{padding:80px 20px 36px!important;width:100%!important}
 .hero-t{font-size:clamp(1.5rem,5vw,2.2rem)!important;line-height:1.25!important;word-break:break-word!important}
 .hero-s{font-size:0.9rem!important;max-width:100%!important}
@@ -342,7 +342,7 @@ table{width:100%;max-width:100%}
 .hero-ey{font-size:0.72rem!important}
 
 /* Footer photo — keep visible */
-.footer-photo{height:160px!important;min-height:120px!important}
+.footer-photo{min-height:140px!important;min-height:120px!important}
 .footer-photo-overlay{font-size:0.85rem!important}
 
 /* Nav toggle — make it big and obvious */
@@ -457,7 +457,7 @@ table{width:100%;max-width:100%}
 
 
 <section class="hero">
-  <svg style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" preserveAspectRatio="xMidYMid slice" aria-hidden="true" width="1400" height="560" viewBox="0 0 1400 560" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="560" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#1A1816"/>
