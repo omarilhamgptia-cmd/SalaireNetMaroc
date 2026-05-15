@@ -314,6 +314,22 @@ nav a[href*="/"][style*="border:1px solid #c8b8ae"]:hover{
 .dd-link-highlight{color:var(--terra2)!important}
 .dd-link-highlight svg{color:var(--terra2);opacity:0.8!important}
 .dd-link-mre .dd-link-icon{background:rgba(45,90,66,0.3)}
+
+/* === MOBILE PERFORMANCE === */
+body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+table{width:100%;max-width:100%}
+.comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:600px){
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .bank-grid{grid-template-columns:1fr}
+  .page-wrap{padding:20px 14px 60px}
+  .card{padding:20px 16px}
+  .hero-c{padding:24px 16px}
+  .hero-t{font-size:clamp(1.4rem,5vw,2rem)}
+  .nav-dropdown-inner{flex-direction:column;gap:16px}
+  .dd-col{min-width:unset}
+}
 </style>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="L6V1BVm83qFqmSdHfe4u1Q" async></script>
 <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7257192-370a-46f9-ae56-aeaf2f3928971.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>

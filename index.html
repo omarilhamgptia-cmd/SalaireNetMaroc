@@ -326,7 +326,23 @@ nav a[href*="/"][style*="border:1px solid #c8b8ae"]:hover{
 .trust-strip-page strong{color:var(--ink2)}
 .disclaimer-footer{background:var(--terra-l);border:1px solid var(--terra2);border-left:4px solid var(--terra);border-radius:var(--radius);padding:16px 20px;font-size:0.84rem;color:var(--ink2);margin:32px 0 16px;line-height:1.6}
 .disclaimer-footer strong{color:var(--terra)}
-.source-block{font-size:0.78rem;color:var(--ink3);padding:10px 16px;border-top:1px solid var(--rule);margin-top:8px}</style>
+.source-block{font-size:0.78rem;color:var(--ink3);padding:10px 16px;border-top:1px solid var(--rule);margin-top:8px}
+/* === MOBILE PERFORMANCE === */
+body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+table{width:100%;max-width:100%}
+.comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:600px){
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .bank-grid{grid-template-columns:1fr}
+  .page-wrap{padding:20px 14px 60px}
+  .card{padding:20px 16px}
+  .hero-c{padding:24px 16px}
+  .hero-t{font-size:clamp(1.4rem,5vw,2rem)}
+  .nav-dropdown-inner{flex-direction:column;gap:16px}
+  .dd-col{min-width:unset}
+}
+</style>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="L6V1BVm83qFqmSdHfe4u1Q" async></script>
 <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7257192-370a-46f9-ae56-aeaf2f3928971.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
 </head>

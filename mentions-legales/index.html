@@ -69,6 +69,22 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .btn-primary{background:var(--terra);color:#fff;border:none;padding:12px 28px;border-radius:6px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:0.2s}
 .btn-primary:hover{background:#a53d17}
 .disclaimer-box{background:var(--terra-l);border:1px solid var(--terra2);border-left:4px solid var(--terra);border-radius:var(--radius);padding:16px 20px;font-size:0.88rem;color:var(--ink2);margin:20px 0}
+
+/* === MOBILE PERFORMANCE === */
+body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+table{width:100%;max-width:100%}
+.comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:600px){
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .bank-grid{grid-template-columns:1fr}
+  .page-wrap{padding:20px 14px 60px}
+  .card{padding:20px 16px}
+  .hero-c{padding:24px 16px}
+  .hero-t{font-size:clamp(1.4rem,5vw,2rem)}
+  .nav-dropdown-inner{flex-direction:column;gap:16px}
+  .dd-col{min-width:unset}
+}
 </style>
 </head>
 <body>
