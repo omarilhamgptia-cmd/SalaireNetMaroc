@@ -220,6 +220,17 @@ table tr:hover{background:var(--cream2)}
 .dd-link-icon{width:28px;height:28px;background:rgba(193,74,29,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
 .dd-link-mre{border-top:1px solid rgba(255,255,255,0.08);margin-top:8px;padding-top:8px}
 .dd-link-mre .dd-link-icon{background:rgba(45,90,66,0.3)}
+
+/* Stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:24px 0}
+.stat-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--radius);padding:20px 16px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--terra)}
+.stat-card.green::before{background:var(--sage)}
+.stat-card.gold::before{background:#C8973A}
+.stat-icon{font-size:1.4rem;margin-bottom:8px;display:block}
+.stat-value{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:4px}
+.stat-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--ink3)}
+.stat-sub{font-size:0.78rem;color:var(--ink3);margin-top:3px}
 </style>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="L6V1BVm83qFqmSdHfe4u1Q" async></script>
 <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7257192-370a-46f9-ae56-aeaf2f3928971.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
@@ -238,15 +249,15 @@ table tr:hover{background:var(--cream2)}
       <div class="nav-dropdown">
         <div class="dd-title">Calculateurs Salaire</div>
         <a href="/" class="dd-link">
-          <span class="dd-link-icon">🧮</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></span>
           <span>Calculateur salaire net</span>
         </a>
         <a href="/smig-maroc-2026/" class="dd-link">
-          <span class="dd-link-icon">📊</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
           <span>SMIG Maroc 2026</span>
         </a>
         <a href="/bareme-ir-maroc-2026/" class="dd-link">
-          <span class="dd-link-icon">📋</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
           <span>Barème IR 2026</span>
         </a>
       </div>
@@ -256,19 +267,19 @@ table tr:hover{background:var(--cream2)}
       <div class="nav-dropdown">
         <div class="dd-title">Auto-Entrepreneur</div>
         <a href="/auto-entrepreneur/" class="dd-link">
-          <span class="dd-link-icon">🧮</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></span>
           <span>Simulateur AE</span>
         </a>
         <a href="/auto-entrepreneur/inscription/" class="dd-link">
-          <span class="dd-link-icon">📝</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
           <span>S'inscrire</span>
         </a>
         <a href="/auto-entrepreneur/activites/" class="dd-link">
-          <span class="dd-link-icon">📋</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/></svg></span>
           <span>Activités éligibles</span>
         </a>
         <a href="/auto-entrepreneur/declaration/" class="dd-link">
-          <span class="dd-link-icon">📅</span>
+          <span class="dd-link-icon"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
           <span>Déclarer son CA</span>
         </a>
         <div class="dd-link-mre">
@@ -369,6 +380,33 @@ table tr:hover{background:var(--cream2)}
 
 <div class="page-wrap">
   <main>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C14A1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="stat-value">5M+</div>
+        <div class="stat-label">MRE dans le monde</div>
+        <div class="stat-sub">France, Belgique, Canada, Gulf</div>
+      </div>
+      <div class="stat-card green">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D5A42" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div class="stat-value">120 Md</div>
+        <div class="stat-label">Transferts MAD/an</div>
+        <div class="stat-sub">8% des recettes devises</div>
+      </div>
+      <div class="stat-card gold">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="stat-value">73%</div>
+        <div class="stat-label">Ont un projet immo</div>
+        <div class="stat-sub">Au Maroc depuis l'étranger</div>
+      </div>
+      <div class="stat-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C14A1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="stat-value">1,7M</div>
+        <div class="stat-label">MRE en France</div>
+        <div class="stat-sub">32% des transferts mondiaux MRE</div>
+      </div>
+    </div>
 
     <div class="ad-container">
       <span class="ad-label">Publicité</span>
@@ -510,12 +548,12 @@ table tr:hover{background:var(--cream2)}
     <nav style="border-top:2px solid #e0d5cc;padding:40px 24px;max-width:1260px;margin:40px auto 0" aria-label="Pages liées">
       <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;color:#231f1b">Voir aussi</h3>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px">
-        <li><a href="/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">🧮 Calculateur Salaire Net</a></li>
-        <li><a href="/auto-entrepreneur/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">💼 Auto-Entrepreneur</a></li>
-        <li><a href="/smig-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">📊 SMIG 2026</a></li>
-        <li><a href="/bareme-ir-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">📋 Barème IR 2026</a></li>
-        <li><a href="/transfert-argent-maroc/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">💸 Comparateur transfert argent maroc</a></li>
-        <li><a href="/compte-bancaire-mre/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">🏦 Compte bancaire MRE</a></li>
+        <li><a href="/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></span> Calculateur Salaire Net</a></li>
+        <li><a href="/auto-entrepreneur/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/></svg></span> Auto-Entrepreneur</a></li>
+        <li><a href="/smig-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span> SMIG 2026</a></li>
+        <li><a href="/bareme-ir-maroc-2026/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span> Barème IR 2026</a></li>
+        <li><a href="/transfert-argent-maroc/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span> Comparateur transfert argent maroc</a></li>
+        <li><a href="/compte-bancaire-mre/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none"><span style="display:inline-flex;align-items:center;margin-right:5px;opacity:0.85;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7 12 2"/></svg></span> Compte bancaire MRE</a></li>
         <li><a href="/quitus-fiscal-mre-maroc/" style="display:inline-block;padding:8px 14px;border:1px solid #c8b8ae;border-radius:6px;font-size:0.9rem;color:#8b3a1e;text-decoration:none">🏠 Quitus Fiscal MRE</a></li>
       </ul>
     </nav>
