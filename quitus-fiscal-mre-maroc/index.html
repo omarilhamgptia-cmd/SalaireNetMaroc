@@ -185,7 +185,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 .topbar-brand em{color:var(--terra2);font-style:italic}
 .cross-nav-pill{background:#2D5A42;color:#fff;text-decoration:none;padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:600;white-space:nowrap}
 
-.hero{position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816;min-height:clamp(280px,55vw,480px)}
+.hero{padding-top:52px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816;min-height:clamp(320px,60vw,500px)}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.3) 100%),linear-gradient(to bottom,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);z-index:1}
 .hero-c{position:relative;z-index:2;padding:40px;max-width:1260px;margin:0 auto;width:100%}
 .hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
@@ -289,7 +289,7 @@ table tr:hover{background:var(--cream2)}
 .footer-links a{color:var(--terra2);text-decoration:none;font-size:0.95rem;transition:0.2s}
 .footer-links a:hover{color:#fff}
 .footer-photo{position:relative;width:100%;height:180px;overflow:hidden}
-.footer-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.footer-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block}
 .footer-photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;font-weight:600;letter-spacing:1px;text-align:center;padding:16px}
 
 /* Excel banner */
@@ -321,8 +321,7 @@ table tr:hover{background:var(--cream2)}
   .nav-link{padding:10px 16px;font-size:0.9rem}
 }
 @media(max-width:600px){
-  .hero-t{font-size:2rem}
-  .card{padding:16px}
+    .card{padding:16px}
   .page-wrap{padding:16px 12px}
   .trust-strip{font-size:0.78rem}
   .maroc-banner{min-height:160px}
@@ -358,13 +357,8 @@ table{width:100%;max-width:100%}
 .comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Hero — always full height and readable */
-.hero-t{font-size:clamp(1.5rem,5vw,2.2rem)!important;line-height:1.25!important;word-break:break-word!important}
-.hero-s{font-size:0.9rem!important;max-width:100%!important}
-.hero-badges{display:none!important}
-.hero-ey{font-size:0.72rem!important}
 
 /* Footer photo — keep visible */
-.footer-photo-overlay{font-size:0.85rem!important}
 
 /* Nav toggle — make it big and obvious */
 .nav-toggle{
@@ -402,13 +396,20 @@ table{width:100%;max-width:100%}
   .page-wrap{padding:20px 14px 60px}
   .card{padding:20px 16px}
   .hero-c{padding:24px 16px 28px!important}
-  .hero-t{font-size:clamp(1.5rem,6vw,2rem)!important}
-  .hero-s{font-size:0.88rem!important}
-  .hero-ey{font-size:0.7rem!important}
-  .nav-dropdown-inner{flex-direction:column;gap:16px}
+        .nav-dropdown-inner{flex-direction:column;gap:16px}
   .dd-col{min-width:unset}
   .footer-links{gap:10px!important}
   .footer-links a{font-size:0.82rem!important}
+}
+
+/* Mobile hero fix — final */
+@media(max-width:500px){
+  .hero{min-height:340px}
+  .hero-c{padding:20px 16px 24px!important}
+  .hero-t{font-size:1.6rem!important;line-height:1.25!important}
+  .hero-s{font-size:0.85rem!important;margin-top:10px!important}
+  .hero-ey{font-size:0.68rem!important}
+  .hero-badges{display:none!important}
 }
 </style>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="L6V1BVm83qFqmSdHfe4u1Q" async></script>

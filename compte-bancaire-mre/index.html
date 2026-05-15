@@ -215,7 +215,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min
 }
 
 /* HERO */
-.hero{padding-top:52px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816;min-height:clamp(280px,55vw,480px)}
+.hero{padding-top:52px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#1a1816;min-height:clamp(320px,60vw,500px)}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.65) 60%,rgba(0,0,0,0.3) 100%),linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.7) 100%)}
 .hero-c{position:relative;z-index:2;padding:40px;max-width:1260px;margin:0 auto;width:100%}
 .hero-ey{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra2);margin-bottom:12px;font-weight:700}
@@ -371,13 +371,8 @@ table{width:100%;max-width:100%}
 .comp-table-wrap,.comparison-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Hero — always full height and readable */
-.hero-t{font-size:clamp(1.5rem,5vw,2.2rem)!important;line-height:1.25!important;word-break:break-word!important}
-.hero-s{font-size:0.9rem!important;max-width:100%!important}
-.hero-badges{display:none!important}
-.hero-ey{font-size:0.72rem!important}
 
 /* Footer photo — keep visible */
-.footer-photo-overlay{font-size:0.85rem!important}
 
 /* Nav toggle — make it big and obvious */
 .nav-toggle{
@@ -415,13 +410,20 @@ table{width:100%;max-width:100%}
   .page-wrap{padding:20px 14px 60px}
   .card{padding:20px 16px}
   .hero-c{padding:24px 16px 28px!important}
-  .hero-t{font-size:clamp(1.5rem,6vw,2rem)!important}
-  .hero-s{font-size:0.88rem!important}
-  .hero-ey{font-size:0.7rem!important}
-  .nav-dropdown-inner{flex-direction:column;gap:16px}
+        .nav-dropdown-inner{flex-direction:column;gap:16px}
   .dd-col{min-width:unset}
   .footer-links{gap:10px!important}
   .footer-links a{font-size:0.82rem!important}
+}
+
+/* Mobile hero fix — final */
+@media(max-width:500px){
+  .hero{min-height:340px}
+  .hero-c{padding:20px 16px 24px!important}
+  .hero-t{font-size:1.6rem!important;line-height:1.25!important}
+  .hero-s{font-size:0.85rem!important;margin-top:10px!important}
+  .hero-ey{font-size:0.68rem!important}
+  .hero-badges{display:none!important}
 }
 </style>
 <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7257192-370a-46f9-ae56-aeaf2f3928971.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
