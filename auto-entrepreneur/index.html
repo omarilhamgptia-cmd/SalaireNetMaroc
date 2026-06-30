@@ -606,6 +606,7 @@ table{width:100%;max-width:100%}
         <div class="totitem"><div class="totlbl" data-fr="Cotisations" data-en="Contributions">Cotisations</div><div class="totval imp" id="totContrib">—</div></div>
         <div class="totitem"><div class="totlbl" data-fr="Revenus Nets" data-en="Net Income">Revenus Nets</div><div class="totval non" id="totNet">—</div></div>
       </div>
+      <p class="ihint" style="margin-top:14px;display:block" data-fr="Estimation indicative. La cotisation CNSS minimale est de 300 DH/trimestre (1 200 DH/an), due même à CA nul ; votre montant réel dépend de votre tranche officielle (T1–T8) selon votre CA. Barème exact sur ae.gov.ma." data-en="Indicative estimate. The minimum CNSS contribution is 300 DH/quarter (1,200 DH/year), due even with zero turnover; your actual amount depends on your official bracket (T1–T8). Exact schedule on ae.gov.ma.">Estimation indicative. La cotisation CNSS minimale est de 300 DH/trimestre (1 200 DH/an), due même à CA nul ; votre montant réel dépend de votre tranche officielle (T1–T8) selon votre CA. Barème exact sur ae.gov.ma.</p>
     </div>
 
     <div class="maroc-banner">
@@ -802,7 +803,7 @@ let result = null;
 const T = {
   gross:    {fr:'Revenus Bruts',                  en:'Gross Income'},
   cnss:     {fr:'CNSS (Retraite/Prestations)',      en:'CNSS Contribution'},
-  cnssN:    {fr:'Estimation indicative',            en:'Indicative estimate'},
+  cnssN:    {fr:'Forfait min. 300 DH/trim. (1 200 DH/an)', en:'Min. flat 300 DH/quarter (1,200 DH/yr)'},
   ir:       {fr:'IR (Impôt sur le Revenu)',         en:'IR Income Tax'},
   irN:      {fr:'0,5 % ≤ 80 000 / 1 % > 80 000',   en:'0.5% ≤ 80,000 / 1% > 80,000'},
   net:      {fr:'REVENU NET',                      en:'NET INCOME'},
@@ -826,8 +827,15 @@ const FAQS = {
 };
 
 // --- CALCULATION ENGINE ---
+// Cotisation CNSS auto-entrepreneur : forfait par tranches officielles T1-T8
+// (ce N'EST PAS un pourcentage du chiffre d'affaires). Minimum officiel :
+// 300 DH/trimestre = 1 200 DH/an, du meme a CA nul. L'outil raisonne en annuel.
+// TODO: remplacer CNSS_MIN_ANNUEL par la grille T1-T8 officielle (montants ae.gov.ma).
+const CNSS_MIN_TRIMESTRE = 300;                   // DH / trimestre (minimum officiel)
+const CNSS_MIN_ANNUEL = CNSS_MIN_TRIMESTRE * 4;   // 1 200 DH / an
+
 function compute(income) {
-  const cnss = income * 0.0448;
+  const cnss = CNSS_MIN_ANNUEL;
   let ir = 0;
   if (income <= 80000) {
     ir = income * 0.005;
