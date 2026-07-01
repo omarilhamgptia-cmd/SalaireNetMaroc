@@ -138,6 +138,22 @@
         "@type": "Answer",
         "text": "Oui, toutes les grandes banques marocaines proposent des applications mobiles et espaces en ligne. CIH et Attijariwafa sont les plus avancées sur le digital. Vous pouvez consulter votre solde, faire des virements et payer des factures depuis la France, la Belgique ou n'importe où dans le monde."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Le compte MRE est-il imposé au Maroc ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les fonds reçus de l'étranger sur un compte MRE ne sont pas imposés au Maroc. Les intérêts éventuels sont généralement exonérés d'impôt sur le revenu pour un non-résident fiscal (séjour de moins de 183 jours par an au Maroc), conformément au Code Général des Impôts. Vérifiez votre situation auprès de la DGI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on clôturer un compte MRE depuis l'étranger ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, par courrier recommandé avec le RIB de destination des fonds et une copie de la CIN. Il n'y a pas de frais de clôture au Maroc."
+      }
     }
   ]
 }
@@ -526,6 +542,10 @@ table{width:100%;max-width:100%}
 
 <div class="page-wrap">
   <main>
+
+    <div class="answer-box" style="background:var(--cream2);border-left:4px solid var(--terra);border-radius:8px;padding:20px 24px;margin:24px 0 8px;line-height:1.65;color:var(--ink)">
+      <strong>En bref :</strong> Un compte MRE en dirhams convertibles vous permet de recevoir vos transferts au Maroc et de rapatrier librement vos fonds vers l'étranger, sans autorisation de l'Office des Changes. Les trois formes principales sont le compte en dirhams convertibles, le compte en devises, et le compte spécial combiné (les deux à la fois). L'ouverture est possible à distance depuis les filiales européennes des banques marocaines.
+    </div>
 
     <!-- Trust Strip -->
     <div class="trust-strip-page">
@@ -970,7 +990,9 @@ const FAQS = [
   { q:"La Banque Populaire a-t-elle des agences en France ?", a:"Oui. La Banque Populaire dispose d'agences dédiées MRE à Paris, Lyon, Marseille, Strasbourg et d'autres villes. Ces agences proposent tous les services en français et en arabe." },
   { q:"Comment recevoir mon salaire français sur un compte marocain ?", a:"Vous ne pouvez pas domicilier votre salaire français directement. La méthode standard : recevez sur votre compte français, puis transférez via Wise pour minimiser les frais. Vous pouvez programmer des virements récurrents mensuels." },
   { q:"Quelle banque choisir pour envoyer de l'argent régulièrement au Maroc ?", a:"CIH propose des virements préférentiels depuis l'Europe. Dans tous les cas, comparez avec Wise avant chaque transfert — le taux Wise est souvent 2-3% meilleur que le taux interbancaire appliqué par les banques." },
-  { q:"Puis-je gérer mon compte marocain depuis l'étranger ?", a:"Oui, toutes les grandes banques marocaines proposent des applications mobiles. CIH et Attijariwafa sont les plus avancées. Vous pouvez consulter votre solde, faire des virements et payer des factures depuis la France, la Belgique ou le Canada." }
+  { q:"Puis-je gérer mon compte marocain depuis l'étranger ?", a:"Oui, toutes les grandes banques marocaines proposent des applications mobiles. CIH et Attijariwafa sont les plus avancées. Vous pouvez consulter votre solde, faire des virements et payer des factures depuis la France, la Belgique ou le Canada." },
+  { q:"Le compte MRE est-il imposé au Maroc ?", a:"Les fonds reçus de l'étranger sur un compte MRE ne sont pas imposés au Maroc. Les intérêts éventuels sont généralement exonérés d'impôt sur le revenu pour un non-résident fiscal (séjour de moins de 183 jours par an au Maroc), conformément au Code Général des Impôts. Vérifiez votre situation auprès de la DGI." },
+  { q:"Peut-on clôturer un compte MRE depuis l'étranger ?", a:"Oui, par courrier recommandé avec le RIB de destination des fonds et une copie de la CIN. Il n'y a pas de frais de clôture au Maroc." }
 ];
 
 const faqContainer = document.getElementById('faqContainer');
