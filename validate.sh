@@ -16,7 +16,7 @@ check $COUNT "Aucun lien mort"
 COUNT=$(grep -rl "bulletin de paie" --include="*.html" . | grep -v .git | wc -l)
 [ $COUNT -gt 0 ]; check $? "Texte bandeau Excel correct"
 
-for FILE in index.html auto-entrepreneur/index.html auto-entrepreneur/inscription/index.html auto-entrepreneur/declaration/index.html auto-entrepreneur/activites/index.html smig-maroc-2026/index.html bareme-ir-maroc-2026/index.html; do
+for FILE in index.html auto-entrepreneur/index.html auto-entrepreneur/inscription/index.html auto-entrepreneur/declaration/index.html auto-entrepreneur/activites/index.html auto-entrepreneur/ae-gov-ma/index.html smig-maroc-2026/index.html bareme-ir-maroc-2026/index.html; do
   COUNT=$(grep -c "</html>" "$FILE" 2>/dev/null || echo 0)
   [ $COUNT -eq 1 ]; check $? "$FILE HTML valide"
 done
