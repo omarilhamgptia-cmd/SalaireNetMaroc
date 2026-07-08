@@ -438,6 +438,7 @@ table{width:100%;max-width:100%}
           <a href="/auto-entrepreneur/inscription/" class="dd-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> S'inscrire sur ae.gov.ma</a>
           <a href="/auto-entrepreneur/activites/" class="dd-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Activités éligibles</a>
           <a href="/auto-entrepreneur/declaration/" class="dd-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg> Déclarer son CA</a>
+          <a href="/auto-entrepreneur/facture/" class="dd-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg> Générateur de Facture</a>
         </div>
         <div class="dd-col">
           <div class="dd-title">AE depuis l'étranger</div>
@@ -641,15 +642,61 @@ table.doc-lines th.num,table.doc-lines td.num{text-align:right;white-space:nowra
 .faq-inv .faq-item.open .faq-q::after{content:'−'}
 
 /* ===== IMPRESSION : n'imprimer QUE la facture ===== */
+/* On utilise display:none (et non visibility:hidden) sur tout ce qui
+   n'est pas la facture : visibility garde la hauteur des blocs masqués
+   → pages blanches. display:none les retire réellement du flux. */
 @media print{
-  body{background:#fff!important}
-  /* on masque l'encre de toute la page… */
-  body *{visibility:hidden!important}
-  /* …puis on ré-affiche uniquement le document facture */
-  #invoiceDoc,#invoiceDoc *{visibility:visible!important}
-  #invoiceDoc{position:absolute!important;left:0;top:0;width:100%;border:none!important;box-shadow:none!important;padding:0!important;margin:0!important;font-size:12pt}
-  .doc-toolbar{display:none!important}
-  @page{margin:16mm}
+  @page{size:A4;margin:14mm}
+  html,body{background:#fff!important;margin:0!important;padding:0!important}
+
+  /* 1) Masquer tout le contenu de premier niveau hors facture */
+  body > nav,
+  body > section,
+  body > footer,
+  body > script,
+  body > style{display:none!important}
+
+  /* 2) À l'intérieur de #printRoot, ne garder que la facture */
+  #printRoot > .pack-cta,
+  #printRoot > .official-box,
+  #printRoot > .inv-editorial{display:none!important}
+  #printRoot .enbref,
+  #printRoot .inv-panel,
+  #printRoot .doc-toolbar{display:none!important}
+
+  /* 3) Rétablir la chaîne d'ancêtres de la facture, à plat, sans grille */
+  #printRoot,
+  #printRoot .inv-wrap,
+  #printRoot .inv-grid,
+  #printRoot .inv-preview-wrap{
+    display:block!important;
+    position:static!important;
+    top:auto!important;
+    max-width:none!important;
+    width:auto!important;
+    margin:0!important;
+    padding:0!important;
+    gap:0!important;
+    border:none!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+  }
+
+  /* 4) La facture elle-même : dans le flux, pleine largeur, 1 page */
+  #invoiceDoc{
+    display:block!important;
+    position:static!important;
+    width:100%!important;
+    max-width:100%!important;
+    border:none!important;
+    box-shadow:none!important;
+    padding:0!important;
+    margin:0!important;
+    font-size:11pt;
+  }
+  #invoiceDoc *{visibility:visible!important}
+  /* Éviter les coupures de lignes de tableau entre deux pages */
+  table.doc-lines tr{page-break-inside:avoid}
 }
 </style>
 
@@ -774,7 +821,7 @@ table.doc-lines th.num,table.doc-lines td.num{text-align:right;white-space:nowra
           </div>
         </div>
 
-        <div class="doc-tva">TVA non applicable — régime de l'auto-entrepreneur.</div>
+        <div class="doc-tva">Montant exonéré de la TVA — Art. 91-II-1° du Code Général des Impôts.</div>
 
         <div class="doc-foot">
           Facture émise dans le cadre du statut auto-entrepreneur (loi 114-13). Pour vos obligations exactes, consultez ae.gov.ma.
@@ -831,10 +878,36 @@ table.doc-lines th.num,table.doc-lines td.num{text-align:right;white-space:nowra
   'use strict';
   var LS_KEY = 'cdm_facture_emetteur';
   var invoiceEventFired = false;
+  var lastTotal = 0;   // dernier total calculé (pour invoice_print)
+  var lastCount = 0;   // dernier nb de lignes (pour invoice_print)
+
+  // Environnement de dev = localhost / 127.0.0.1 / fichier local
+  function isDev(){
+    return location.protocol === 'file:' ||
+           /^(localhost|127\.0\.0\.1|\[?::1\]?)$/.test(location.hostname);
+  }
+
+  // Paramètres GA4 communs à tous les événements métier de cette page
+  function baseParams(){
+    return {
+      page_path: location.pathname,
+      page_title: document.title,
+      source_page: 'facture_auto_entrepreneur'
+    };
+  }
 
   function track(name, params){
-    if (typeof window.cdmTrack === 'function') { window.cdmTrack(name, params || {}); }
-    else if (typeof window.gtag === 'function') { window.gtag('event', name, params || {}); }
+    var payload = baseParams();
+    if (params){ for (var k in params){ if (params.hasOwnProperty(k)) payload[k] = params[k]; } }
+    // gtag est défini dans le <head> : on l'utilise en priorité.
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, payload);
+    } else if (typeof window.cdmTrack === 'function') {
+      window.cdmTrack(name, payload);
+    } else if (isDev()) {
+      // En prod on échoue silencieusement ; en dev on prévient clairement.
+      console.warn('[facture] gtag indisponible — événement non envoyé :', name, payload);
+    }
   }
 
   function fmt(n){
@@ -968,16 +1041,21 @@ table.doc-lines th.num,table.doc-lines td.num{text-align:right;white-space:nowra
     document.getElementById('pvLines').innerHTML = html;
     document.getElementById('pvTotal').textContent = fmt(total);
 
+    // Mémorise l'état courant pour les événements déclenchés au clic
+    lastTotal = Math.round(total * 100) / 100;
+    lastCount = lines.length;
+
     // Event : premier aperçu complet (nom + 1 ligne + total > 0)
     if (!invoiceEventFired && emName && lines.length >= 1 && total > 0){
       invoiceEventFired = true;
-      track('invoice_generated', {});
+      track('invoice_generated', { invoice_total: lastTotal, line_items_count: lastCount });
     }
   }
 
   // Impression → PDF (n'imprime que la facture via CSS @media print)
   document.getElementById('printBtn').addEventListener('click', function(){
-    track('invoice_print', {});
+    // IMPORTANT : on envoie l'événement AVANT window.print() (bloquant).
+    track('invoice_print', { invoice_total: lastTotal, line_items_count: lastCount });
     window.print();
   });
 
