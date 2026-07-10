@@ -23,10 +23,13 @@
     var form = target.closest('a[href*="forms.gle"]');
     if (form) {
       track('outbound_form', { link_url: form.href });
-      // CTA lead magnet "Recevoir le guide gratuit" (pages MRE)
+      // CTA lead magnet "Recevoir le guide gratuit" (pages MRE, haut + bas de page)
       var label = (form.textContent || '').toLowerCase();
       if (label.indexOf('guide') !== -1) {
-        track('guide_cta_click', { page_path: location.pathname });
+        track('guide_cta_click', {
+          page_path: location.pathname,
+          cta_position: form.getAttribute('data-cta-pos') || 'unknown'
+        });
       }
     }
 
