@@ -1,7 +1,7 @@
 /* CalculateurDuMaroc — GA4 event tracking (Sprint A)
    Un seul snippet réutilisable, chargé en fin de body sur toutes les pages.
    N'écoute que des interactions — ne modifie AUCUN calcul existant.
-   Événements : guide_cta_click, calc_use, excel_export, outbound_form. */
+   Événements : guide_cta_click, calc_use, excel_export, outbound_form, lead_form_scroll. */
 (function () {
   'use strict';
 
@@ -31,6 +31,11 @@
           cta_position: form.getAttribute('data-cta-pos') || 'unknown'
         });
       }
+    }
+
+    // CTA d'ancre vers le formulaire de mise en relation intégré (page quitus)
+    if (target.closest('a[href="#mise-en-relation"]')) {
+      track('lead_form_scroll', { page_path: location.pathname });
     }
 
     // Export Excel du bulletin de paie (bouton #exportBtn)
