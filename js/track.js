@@ -19,8 +19,8 @@
     var target = e.target;
     if (!target || !target.closest) return;
 
-    // Lien sortant vers un Google Form (générique, couvre forms.gle et docs.google.com/forms)
-    var form = target.closest('a[href*="forms.gle"], a[href*="docs.google.com/forms"]');
+    // Lien sortant vers un formulaire (couvre forms.gle, docs.google.com/forms et tally.so)
+    var form = target.closest('a[href*="forms.gle"], a[href*="docs.google.com/forms"], a[href*="tally.so"]');
     if (form) {
       track('outbound_form', { link_url: form.href });
       // CTA lead magnet "Recevoir le guide gratuit" (pages MRE, haut + bas de page)
